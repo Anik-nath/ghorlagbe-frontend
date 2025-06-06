@@ -4,51 +4,68 @@ import { Search, Heart, Shield, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
+import bgslide from "../../public/assets/others/bg-slide.jpg"; // Adjust the path as necessary
 
 const HomePage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section
-        className="relative bg-cover bg-center min-h-[70vh] flex items-center"
+        className="relative bg-cover bg-center min-h-[90vh] flex items-center"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80')`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(${bgslide})`,
         }}
       >
         <div className="container mx-auto px-4 text-center text-white">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in">
-            বাড়ি খুঁজুন <span className="text-green-400">সহজেই</span>
+          <h1 className="text-4xl md:text-[5rem] font-bold mb-8">
+            বাড়ি খুঁজুন <span className="text-[#09B800]">সহজে</span>
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-gray-200">
+          <p className="text-xl md:text-3xl font-normal mb-12 py-2 text-white">
             92,947 রুম এবং ফ্ল্যাটমেট পাওয়া যাচ্ছে
           </p>
 
           {/* Search Bar */}
-          <div className="max-w-4xl mx-auto bg-white rounded-lg p-4 shadow-lg">
-            <div className="flex flex-col md:flex-row gap-4">
-              <div className="flex-1">
-                <Input
-                  placeholder="খুঁজুন ফ্ল্যাট / সিট, রুম"
-                  className="h-12 text-gray-900"
-                />
+          <div className="max-w-4xl mx-auto bg-white rounded-full py-5 px-6 shadow-lg">
+            <div className="flex flex-col justify-between md:flex-row gap-4 items-center border rounded-md">
+              <div className="flex items-center w-full md:w-auto">
+                <div className="bg-gray-50 rounded-md rounded-r-none h-12 w-12 flex items-center justify-center ">
+                  <Search className="w-6 h-6 text-black font-bold" />
+                </div>
+                <div className="flex-1">
+                  <Input
+                    placeholder="খুঁজুন ফ্ল্যাট / সিট রুম"
+                    className="h-12 text-gray-900 border-none "
+                  />
+                </div>
               </div>
-              <select className="px-4 py-3 border border-gray-300 rounded-md text-gray-900">
+              <select className="px-4 py-3 text-gray-900">
                 <option>শহর</option>
                 <option>ঢাকা</option>
                 <option>চট্টগ্রাম</option>
                 <option>সিলেট</option>
               </select>
-              <select className="px-4 py-3 border border-gray-300 rounded-md text-gray-900">
+              <select className="px-4 py-3 text-gray-900">
                 <option>এলাকা</option>
                 <option>ধানমন্ডি</option>
                 <option>গুলশান</option>
                 <option>বনানী</option>
               </select>
-              <Button className="bg-green-600 hover:bg-green-700 h-12 px-8">
-                <Search className="h-5 w-5 mr-2" />
+              <Button className="rounded-md rounded-l-none bg-[#157347] hover:bg-[#198754] h-12 ">
                 খুঁজুন
               </Button>
             </div>
+          </div>
+          {/* details button */}
+          <div className="text-center mt-10">
+            <Button
+              asChild
+              variant="default"
+              className="bg-black/50 hover:bg-black border rounded-none text-lg px-12 py-6"
+            >
+              <Link to="/search" className="flex items-center gap-2">
+                <span>বিস্তারিত খুঁজুন</span>
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -61,7 +78,7 @@ const HomePage = () => {
               <CardContent>
                 <Heart className="h-12 w-12 text-green-600 mx-auto mb-4" />
                 <h3 className="text-xl font-semibold mb-2">
-                  আমরা সর্বদা যত্নে
+                  আমরা সর্বদা যত্নেখুঁজুন ফ্ল্যাট / সিট রুম
                 </h3>
                 <p className="text-gray-600">
                   এক কিলিক করে আমরা আমাদের পরবর্তী সম্পর্ক স্থাপন করি উইপরেশন
