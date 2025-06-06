@@ -12,6 +12,7 @@ import {
   Settings,
   HelpCircle,
   Crown,
+  UserPlus,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -71,22 +72,22 @@ const Navbar = () => {
             <img
               src={logo}
               alt="ঘর লাগবে লোগো"
-              className="w-full h-24 object-contain "
+              className="w-full md:h-20 h-16 object-contain "
               loading="lazy"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 to={item.href}
                 onClick={item.onClick}
-                className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                className={`px-2 py-2 text-lg font-normal transition-colors duration-200 ${
                   isActive(item.href)
-                    ? "text-green-600 border-b-2 border-green-600"
-                    : "text-gray-700 hover:text-green-600"
+                    ? "text-[#198754] border-b-2 border-[#198754]"
+                    : "text-gray-700 hover:text-[#198754]"
                 }`}
               >
                 {item.name}
@@ -150,27 +151,28 @@ const Navbar = () => {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="text-gray-700 hover:text-green-600"
+                    className="text-lg text-[#198754] hover:bg-transparent hover:text-[#198754] flex items-center"
                   >
-                    <PlusCircle className="h-4 w-4 mr-2" />
+                    <PlusCircle className="h-4 w-4 text-[#198754]" />
                     পোস্ট বিজ্ঞাপন
                   </Button>
                 </Link>
                 <Link to="/register">
                   <Button
-                    size="sm"
-                    className="bg-green-600 hover:bg-green-700 text-white"
+                    size="lg"
+                    className="bg-[#198754] hover:bg-[#157347] text-white text-lg px-4 font-normal"
                   >
+                    <UserPlus className="h-6 w-6" />
                     রেজিস্ট্রেশন
                   </Button>
                 </Link>
                 <Link to="/login">
                   <Button
                     variant="outline"
-                    size="sm"
-                    className="border-gray-300"
+                    size="lg"
+                    className="flex flex-row items-center text-lg font-normal px-4 text-[#198754] border-[#198754] hover:bg-[#198754] hover:text-white"
                   >
-                    <User className="h-4 w-4 mr-2" />
+                    <User className="h-10 w-10" />
                     লগইন
                   </Button>
                 </Link>
@@ -182,105 +184,136 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-md text-gray-700 hover:text-green-600 hover:bg-gray-100"
+              className="p-2  rounded-md text-gray-700 "
             >
-              {isOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
+              <Menu className="h-10 w-10" />
             </button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t">
-              {navigation.map((item) => (
+          <div className="md:hidden fixed inset-0 z-50">
+            {/* Overlay */}
+            <div
+              className="fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 animate-fadeIn"
+              onClick={() => setIsOpen(false)}
+            ></div>
+
+            {/* Menu container */}
+            <div className="fixed inset-y-0 left-0 w-9/12 max-w-xs bg-white shadow-lg overflow-y-auto animate-slideIn">
+              <div className="flex items-center justify-between px-4 pt-4 pb-2 border-b">
                 <Link
-                  key={item.name}
-                  to={item.href}
-                  onClick={(e) => {
-                    setIsOpen(false);
-                    if (item.onClick) item.onClick(e);
-                  }}
-                  className={`block px-3 py-2 text-base font-medium rounded-md transition-colors duration-200 ${
-                    isActive(item.href)
-                      ? "text-green-600 bg-green-50"
-                      : "text-gray-700 hover:text-green-600 hover:bg-gray-50"
-                  }`}
+                  to="/"
+                  className="flex items-center"
+                  onClick={() => setIsOpen(false)}
                 >
-                  {item.name}
+                  <img
+                    src={logo}
+                    alt="ঘর লাগবে লোগো"
+                    className="h-16 object-contain"
+                    loading="lazy"
+                  />
                 </Link>
-              ))}
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="p-2 rounded-md text-gray-700 hover:text-green-600 hover:bg-gray-100"
+                >
+                  <X className="h-6 w-6" />
+                </button>
+              </div>
 
-              {isAuthenticated && (
-                <>
-                  <div className="border-t pt-2 mt-2">
-                    {accountMenuItems.map((item) => (
-                      <Link
-                        key={item.name}
-                        to={item.href}
-                        onClick={() => setIsOpen(false)}
-                        className="flex items-center px-3 py-2 text-base font-medium rounded-md text-gray-700 hover:text-green-600 hover:bg-gray-50"
-                      >
-                        <item.icon className="h-4 w-4 mr-2" />
-                        {item.name}
-                      </Link>
-                    ))}
-                    <button
-                      onClick={() => {
-                        setIsOpen(false);
-                        handleLogout();
-                      }}
-                      className="flex items-center w-full px-3 py-2 text-base font-medium rounded-md text-red-600 hover:bg-red-50"
-                    >
-                      <LogOut className="h-4 w-4 mr-2" />
-                      লগ আউট
-                    </button>
-                  </div>
-                </>
-              )}
-
-              <div className="pt-4 border-t border-gray-200 space-y-2">
-                {isAuthenticated ? (
-                  <Link to="/post-rent" onClick={() => setIsOpen(false)}>
-                    <Button
-                      size="sm"
-                      className="bg-yellow-400 hover:bg-yellow-300 text-black"
-                    >
-                      ফ্রি বিজ্ঞাপন
-                    </Button>
+              <div className="px-2 pt-2 pb-3 space-y-1">
+                {navigation.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    onClick={(e) => {
+                      setIsOpen(false);
+                      if (item.onClick) item.onClick(e);
+                    }}
+                    className={`block px-3 py-3 text-base font-medium rounded-md transition-colors duration-200 ${
+                      isActive(item.href)
+                        ? "text-green-600 bg-green-50"
+                        : "text-gray-700 hover:text-green-600 hover:bg-gray-50"
+                    }`}
+                  >
+                    {item.name}
                   </Link>
-                ) : (
+                ))}
+
+                {isAuthenticated && (
                   <>
-                    <Link to="/post-ad" onClick={() => setIsOpen(false)}>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="w-full text-gray-700 hover:text-green-600"
+                    <div className="border-t pt-2 mt-2">
+                      {accountMenuItems.map((item) => (
+                        <Link
+                          key={item.name}
+                          to={item.href}
+                          onClick={() => setIsOpen(false)}
+                          className="flex items-center px-3 py-3 text-base font-medium rounded-md text-gray-700 hover:text-green-600 hover:bg-gray-50"
+                        >
+                          <item.icon className="h-4 w-4 mr-2" />
+                          {item.name}
+                        </Link>
+                      ))}
+                      <button
+                        onClick={() => {
+                          setIsOpen(false);
+                          handleLogout();
+                        }}
+                        className="flex items-center w-full px-3 py-3 text-base font-medium rounded-md text-red-600 hover:bg-red-50"
                       >
-                        <PlusCircle className="h-4 w-4 mr-2" />
-                        পোস্ট বিজ্ঞাপন
-                      </Button>
-                    </Link>
-                    <Link to="/register" onClick={() => setIsOpen(false)}>
-                      <Button
-                        size="sm"
-                        className="w-full bg-green-600 hover:bg-green-700 text-white"
-                      >
-                        রেজিস্ট্রেশন
-                      </Button>
-                    </Link>
-                    <Link to="/login" onClick={() => setIsOpen(false)}>
-                      <Button variant="outline" size="sm" className="w-full">
-                        <User className="h-4 w-4 mr-2" />
-                        লগইন
-                      </Button>
-                    </Link>
+                        <LogOut className="h-4 w-4 mr-2" />
+                        লগ আউট
+                      </button>
+                    </div>
                   </>
                 )}
+
+                <div className="pt-4 border-t border-gray-200 space-y-2 px-2">
+                  {isAuthenticated ? (
+                    <Link to="/post-rent" onClick={() => setIsOpen(false)}>
+                      <Button
+                        size="sm"
+                        className="w-full bg-yellow-400 hover:bg-yellow-300 text-black"
+                      >
+                        ফ্রি বিজ্ঞাপন
+                      </Button>
+                    </Link>
+                  ) : (
+                    <>
+                      <Link to="/post-ad" onClick={() => setIsOpen(false)}>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="w-full text-lg text-[#198754] hover:bg-transparent hover:text-[#198754] flex items-center justify-start"
+                        >
+                          <PlusCircle className="h-4 w-4 text-[#198754] mr-2" />
+                          পোস্ট বিজ্ঞাপন
+                        </Button>
+                      </Link>
+                      <Link to="/register" onClick={() => setIsOpen(false)}>
+                        <Button
+                          size="lg"
+                          className="my-2 md:my-0 w-full bg-[#198754] hover:bg-[#157347] text-white text-lg px-4 font-normal justify-start"
+                        >
+                          <UserPlus className="h-6 w-6 mr-2" />
+                          রেজিস্ট্রেশন
+                        </Button>
+                      </Link>
+                      <Link to="/login" onClick={() => setIsOpen(false)}>
+                        <Button
+                          variant="outline"
+                          size="lg"
+                          className="w-full flex flex-row items-center text-lg font-normal px-4 text-[#198754] border-[#198754] hover:bg-[#198754] hover:text-white justify-start"
+                        >
+                          <User className="h-6 w-6 mr-2" />
+                          লগইন
+                        </Button>
+                      </Link>
+                    </>
+                  )}
+                </div>
               </div>
             </div>
           </div>
