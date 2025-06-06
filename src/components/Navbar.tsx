@@ -22,6 +22,7 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { useAuth } from "@/contexts/AuthContext";
+import logo from "../../public/assets/logo-main.png"; // Adjust the path as necessary
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -64,16 +65,15 @@ const Navbar = () => {
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-auto py-4">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="relative">
-              <House className="h-8 w-8 text-green-600" />
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
-            </div>
-            <span className="text-2xl font-bold text-gray-900">
-              ঘর <span className="text-red-500">লাগবে</span>
-            </span>
+          <Link to="/" className="flex items-center">
+            <img
+              src={logo}
+              alt="ঘর লাগবে লোগো"
+              className="w-full h-24 object-contain "
+              loading="lazy"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -95,15 +95,14 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Action Buttons */}
-          <div className="hidden md:flex items-center space-x-3">
+          <div className="hidden md:flex flex-row-reverse items-center space-x-3">
             {isAuthenticated ? (
               <>
                 <Link to="/post-rent">
                   <Button
                     size="sm"
-                    className="bg-green-600 hover:bg-green-700 text-white"
+                    className="bg-yellow-400 hover:bg-yellow-300 text-black"
                   >
-                    <PlusCircle className="h-4 w-4 mr-2" />
                     ফ্রি বিজ্ঞাপন
                   </Button>
                 </Link>
@@ -112,13 +111,17 @@ const Navbar = () => {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="flex items-center space-x-2"
+                      className="flex items-center hover:bg-transparent"
                     >
-                      <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                        <User className="h-4 w-4 text-green-600" />
+                      <span className="text-sm font-medium">
+                        Hi! {user?.name}
+                      </span>
+                      <div className="flex items-center flex-1 flex-row">
+                        <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                          <User className="h-4 w-4 text-green-600" />
+                        </div>
+                        <ChevronDown className="h-4 w-4" />
                       </div>
-                      <span className="text-sm font-medium">{user?.name}</span>
-                      <ChevronDown className="h-4 w-4" />
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" className="w-56">
@@ -143,14 +146,14 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <Link to="/login">
+                <Link to="/post-ad">
                   <Button
-                    variant="outline"
+                    variant="ghost"
                     size="sm"
-                    className="border-gray-300"
+                    className="text-gray-700 hover:text-green-600"
                   >
-                    <User className="h-4 w-4 mr-2" />
-                    লগইন
+                    <PlusCircle className="h-4 w-4 mr-2" />
+                    পোস্ট বিজ্ঞাপন
                   </Button>
                 </Link>
                 <Link to="/register">
@@ -161,14 +164,14 @@ const Navbar = () => {
                     রেজিস্ট্রেশন
                   </Button>
                 </Link>
-                <Link to="/post-ad">
+                <Link to="/login">
                   <Button
-                    variant="ghost"
+                    variant="outline"
                     size="sm"
-                    className="text-gray-700 hover:text-green-600"
+                    className="border-gray-300"
                   >
-                    <PlusCircle className="h-4 w-4 mr-2" />
-                    পোস্ট বিজ্ঞাপন
+                    <User className="h-4 w-4 mr-2" />
+                    লগইন
                   </Button>
                 </Link>
               </>
@@ -239,24 +242,27 @@ const Navbar = () => {
                   </div>
                 </>
               )}
-              
+
               <div className="pt-4 border-t border-gray-200 space-y-2">
                 {isAuthenticated ? (
                   <Link to="/post-rent" onClick={() => setIsOpen(false)}>
                     <Button
                       size="sm"
-                      className="w-full bg-green-600 hover:bg-green-700 text-white"
+                      className="bg-yellow-400 hover:bg-yellow-300 text-black"
                     >
-                      <PlusCircle className="h-4 w-4 mr-2" />
                       ফ্রি বিজ্ঞাপন
                     </Button>
                   </Link>
                 ) : (
                   <>
-                    <Link to="/login" onClick={() => setIsOpen(false)}>
-                      <Button variant="outline" size="sm" className="w-full">
-                        <User className="h-4 w-4 mr-2" />
-                        লগইন
+                    <Link to="/post-ad" onClick={() => setIsOpen(false)}>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="w-full text-gray-700 hover:text-green-600"
+                      >
+                        <PlusCircle className="h-4 w-4 mr-2" />
+                        পোস্ট বিজ্ঞাপন
                       </Button>
                     </Link>
                     <Link to="/register" onClick={() => setIsOpen(false)}>
@@ -267,14 +273,10 @@ const Navbar = () => {
                         রেজিস্ট্রেশন
                       </Button>
                     </Link>
-                    <Link to="/post-ad" onClick={() => setIsOpen(false)}>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="w-full text-gray-700 hover:text-green-600"
-                      >
-                        <PlusCircle className="h-4 w-4 mr-2" />
-                        পোস্ট বিজ্ঞাপন
+                    <Link to="/login" onClick={() => setIsOpen(false)}>
+                      <Button variant="outline" size="sm" className="w-full">
+                        <User className="h-4 w-4 mr-2" />
+                        লগইন
                       </Button>
                     </Link>
                   </>
