@@ -1,10 +1,27 @@
-
-import React, { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { House, Menu, X, User, PlusCircle, ChevronDown, LogOut, Heart, Settings, HelpCircle, Crown } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from '@/components/ui/dropdown-menu';
-import { useAuth } from '@/contexts/AuthContext';
+import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import {
+  House,
+  Menu,
+  X,
+  User,
+  PlusCircle,
+  ChevronDown,
+  LogOut,
+  Heart,
+  Settings,
+  HelpCircle,
+  Crown,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,25 +30,35 @@ const Navbar = () => {
   const { user, isAuthenticated, logout } = useAuth();
 
   const navigation = [
-    { name: 'অনুসন্ধান', href: '/search' },
-    { name: 'সব বিজ্ঞাপন', href: '/ads' },
-    { name: 'আমাদের সম্পর্কে', href: '/about' },
+    { name: "অনুসন্ধান", href: "/search" },
+    { name: "সব বিজ্ঞাপন", href: "/ads" },
+    { name: "আমাদের সম্পর্কে", href: "/about" },
+    {
+      name: "অ্যাকাউন্ট",
+      href: isAuthenticated ? "/profile" : "/login",
+      onClick: (e: React.MouseEvent) => {
+        if (!isAuthenticated) {
+          e.preventDefault();
+          navigate("/login");
+        }
+      },
+    },
   ];
 
   const accountMenuItems = [
-    { name: 'অ্যাকাউন্ট', href: '/profile', icon: User },
-    { name: 'আমার বিজ্ঞাপন', href: '/myads', icon: PlusCircle },
-    { name: 'আমার ফেভারিটস', href: '/favorites', icon: Heart },
-    { name: 'আমার প্রোফাইল', href: '/profile', icon: Settings },
-    { name: 'আপগ্রেড করুন', href: '/upgrade', icon: Crown },
-    { name: 'সাপোর্ট', href: '/contact', icon: HelpCircle },
+    { name: "অ্যাকাউন্ট", href: "/profile", icon: User },
+    { name: "আমার বিজ্ঞাপন", href: "/myads", icon: PlusCircle },
+    { name: "আমার ফেভারিটস", href: "/favorites", icon: Heart },
+    { name: "আমার প্রোফাইল", href: "/profile", icon: Settings },
+    { name: "আপগ্রেড করুন", href: "/upgrade", icon: Crown },
+    { name: "সাপোর্ট", href: "/contact", icon: HelpCircle },
   ];
 
   const isActive = (path: string) => location.pathname === path;
 
   const handleLogout = () => {
     logout();
-    navigate('/');
+    navigate("/");
   };
 
   return (
@@ -55,45 +82,16 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 to={item.href}
+                onClick={item.onClick}
                 className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
                   isActive(item.href)
-                    ? 'text-green-600 border-b-2 border-green-600'
-                    : 'text-gray-700 hover:text-green-600'
+                    ? "text-green-600 border-b-2 border-green-600"
+                    : "text-gray-700 hover:text-green-600"
                 }`}
               >
                 {item.name}
               </Link>
             ))}
-            
-            {/* Account Dropdown for Authenticated Users */}
-            {isAuthenticated && (
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button 
-                    variant="ghost" 
-                    className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-green-600"
-                  >
-                    অ্যাকাউন্ট
-                    <ChevronDown className="h-4 w-4 ml-1" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56">
-                  {accountMenuItems.map((item) => (
-                    <DropdownMenuItem key={item.name} asChild>
-                      <Link to={item.href} className="flex items-center">
-                        <item.icon className="h-4 w-4 mr-2" />
-                        {item.name}
-                      </Link>
-                    </DropdownMenuItem>
-                  ))}
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={handleLogout} className="text-red-600">
-                    <LogOut className="h-4 w-4 mr-2" />
-                    লগ আউট
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            )}
           </div>
 
           {/* Desktop Action Buttons */}
@@ -101,8 +99,8 @@ const Navbar = () => {
             {isAuthenticated ? (
               <>
                 <Link to="/post-rent">
-                  <Button 
-                    size="sm" 
+                  <Button
+                    size="sm"
                     className="bg-green-600 hover:bg-green-700 text-white"
                   >
                     <PlusCircle className="h-4 w-4 mr-2" />
@@ -111,7 +109,11 @@ const Navbar = () => {
                 </Link>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" size="sm" className="flex items-center space-x-2">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="flex items-center space-x-2"
+                    >
                       <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
                         <User className="h-4 w-4 text-green-600" />
                       </div>
@@ -120,14 +122,19 @@ const Navbar = () => {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" className="w-56">
-                    <DropdownMenuItem asChild>
-                      <Link to="/profile" className="flex items-center">
-                        <User className="h-4 w-4 mr-2" />
-                        প্রোফাইল দেখুন
-                      </Link>
-                    </DropdownMenuItem>
+                    {accountMenuItems.map((item) => (
+                      <DropdownMenuItem key={item.name} asChild>
+                        <Link to={item.href} className="flex items-center">
+                          <item.icon className="h-4 w-4 mr-2" />
+                          {item.name}
+                        </Link>
+                      </DropdownMenuItem>
+                    ))}
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={handleLogout} className="text-red-600">
+                    <DropdownMenuItem
+                      onClick={handleLogout}
+                      className="text-red-600"
+                    >
                       <LogOut className="h-4 w-4 mr-2" />
                       লগ আউট
                     </DropdownMenuItem>
@@ -137,9 +144,9 @@ const Navbar = () => {
             ) : (
               <>
                 <Link to="/login">
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
+                  <Button
+                    variant="outline"
+                    size="sm"
                     className="border-gray-300"
                   >
                     <User className="h-4 w-4 mr-2" />
@@ -147,17 +154,17 @@ const Navbar = () => {
                   </Button>
                 </Link>
                 <Link to="/register">
-                  <Button 
-                    size="sm" 
+                  <Button
+                    size="sm"
                     className="bg-green-600 hover:bg-green-700 text-white"
                   >
                     রেজিস্ট্রেশন
                   </Button>
                 </Link>
                 <Link to="/post-ad">
-                  <Button 
-                    variant="ghost" 
-                    size="sm" 
+                  <Button
+                    variant="ghost"
+                    size="sm"
                     className="text-gray-700 hover:text-green-600"
                   >
                     <PlusCircle className="h-4 w-4 mr-2" />
@@ -174,7 +181,11 @@ const Navbar = () => {
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 rounded-md text-gray-700 hover:text-green-600 hover:bg-gray-100"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
@@ -187,17 +198,20 @@ const Navbar = () => {
                 <Link
                   key={item.name}
                   to={item.href}
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => {
+                    setIsOpen(false);
+                    if (item.onClick) item.onClick(e);
+                  }}
                   className={`block px-3 py-2 text-base font-medium rounded-md transition-colors duration-200 ${
                     isActive(item.href)
-                      ? 'text-green-600 bg-green-50'
-                      : 'text-gray-700 hover:text-green-600 hover:bg-gray-50'
+                      ? "text-green-600 bg-green-50"
+                      : "text-gray-700 hover:text-green-600 hover:bg-gray-50"
                   }`}
                 >
                   {item.name}
                 </Link>
               ))}
-              
+
               {isAuthenticated && (
                 <>
                   <div className="border-t pt-2 mt-2">
@@ -229,8 +243,8 @@ const Navbar = () => {
               <div className="pt-4 border-t border-gray-200 space-y-2">
                 {isAuthenticated ? (
                   <Link to="/post-rent" onClick={() => setIsOpen(false)}>
-                    <Button 
-                      size="sm" 
+                    <Button
+                      size="sm"
                       className="w-full bg-green-600 hover:bg-green-700 text-white"
                     >
                       <PlusCircle className="h-4 w-4 mr-2" />
@@ -246,12 +260,19 @@ const Navbar = () => {
                       </Button>
                     </Link>
                     <Link to="/register" onClick={() => setIsOpen(false)}>
-                      <Button size="sm" className="w-full bg-green-600 hover:bg-green-700 text-white">
+                      <Button
+                        size="sm"
+                        className="w-full bg-green-600 hover:bg-green-700 text-white"
+                      >
                         রেজিস্ট্রেশন
                       </Button>
                     </Link>
                     <Link to="/post-ad" onClick={() => setIsOpen(false)}>
-                      <Button variant="ghost" size="sm" className="w-full text-gray-700 hover:text-green-600">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="w-full text-gray-700 hover:text-green-600"
+                      >
                         <PlusCircle className="h-4 w-4 mr-2" />
                         পোস্ট বিজ্ঞাপন
                       </Button>
