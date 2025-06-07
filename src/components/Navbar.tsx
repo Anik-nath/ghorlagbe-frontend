@@ -1,18 +1,15 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
-  House,
   Menu,
   X,
   User,
-  PlusCircle,
   ChevronDown,
   LogOut,
   Heart,
   Settings,
   HelpCircle,
   Crown,
-  UserPlus,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -24,6 +21,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useAuth } from "@/contexts/AuthContext";
 import logo from "/assets/logo-main.png";
+import { FaPlusCircle, FaUserPlus } from "react-icons/fa";
+import { FaRegUser } from "react-icons/fa6";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,7 +48,7 @@ const Navbar = () => {
 
   const accountMenuItems = [
     { name: "অ্যাকাউন্ট", href: "/profile", icon: User },
-    { name: "আমার বিজ্ঞাপন", href: "/myads", icon: PlusCircle },
+    { name: "আমার বিজ্ঞাপন", href: "/myads", icon: FaPlusCircle },
     { name: "আমার ফেভারিটস", href: "/favorites", icon: Heart },
     { name: "আমার প্রোফাইল", href: "/profile", icon: Settings },
     { name: "আপগ্রেড করুন", href: "/upgrade", icon: Crown },
@@ -153,28 +152,21 @@ const Navbar = () => {
                     size="sm"
                     className="text-lg text-[#198754] hover:bg-transparent hover:text-[#198754] flex items-center"
                   >
-                    <PlusCircle className="h-4 w-4 text-[#198754]" />
+                    <FaPlusCircle className="h-6 w-6 text-[#198754]" />
                     পোস্ট বিজ্ঞাপন
                   </Button>
                 </Link>
                 <Link to="/register">
-                  <Button
-                    size="lg"
-                    className="bg-[#198754] hover:bg-[#157347] text-white text-lg px-4 font-normal"
-                  >
-                    <UserPlus className="h-6 w-6" />
+                  <button className="bg-[#198754] flex flex-row py-2 gap-2 rounded-md hover:bg-[#157347] text-white text-lg px-4 font-normal">
+                    <FaUserPlus className="h-6 w-6" />
                     রেজিস্ট্রেশন
-                  </Button>
+                  </button>
                 </Link>
                 <Link to="/login">
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="flex flex-row items-center text-lg font-normal px-4 text-[#198754] border-[#198754] hover:bg-[#198754] hover:text-white"
-                  >
-                    <User className="h-10 w-10" />
+                  <button className="flex flex-row py-2 gap-2 rounded-md border items-center text-lg font-normal px-2 text-[#198754] border-[#198754] hover:bg-[#198754] hover:text-white">
+                    <FaRegUser className="h-5 w-5 mb-1" />
                     লগইন
-                  </Button>
+                  </button>
                 </Link>
               </>
             )}
@@ -286,30 +278,23 @@ const Navbar = () => {
                         <Button
                           variant="ghost"
                           size="sm"
-                          className="w-full text-lg text-[#198754] hover:bg-transparent hover:text-[#198754] flex items-center justify-start"
+                          className="text-lg text-[#198754] hover:bg-transparent hover:text-[#198754] flex items-center"
                         >
-                          <PlusCircle className="h-4 w-4 text-[#198754] mr-2" />
+                          <FaPlusCircle className="h-6 w-6 text-[#198754]" />
                           পোস্ট বিজ্ঞাপন
                         </Button>
                       </Link>
                       <Link to="/register" onClick={() => setIsOpen(false)}>
-                        <Button
-                          size="lg"
-                          className="my-2 md:my-0 w-full bg-[#198754] hover:bg-[#157347] text-white text-lg px-4 font-normal justify-start"
-                        >
-                          <UserPlus className="h-6 w-6 mr-2" />
+                        <button className="bg-[#198754] flex flex-row py-2 gap-2 rounded-md hover:bg-[#157347] text-white text-lg px-4 font-normal">
+                          <FaUserPlus className="h-6 w-6" />
                           রেজিস্ট্রেশন
-                        </Button>
+                        </button>
                       </Link>
                       <Link to="/login" onClick={() => setIsOpen(false)}>
-                        <Button
-                          variant="outline"
-                          size="lg"
-                          className="w-full flex flex-row items-center text-lg font-normal px-4 text-[#198754] border-[#198754] hover:bg-[#198754] hover:text-white justify-start"
-                        >
-                          <User className="h-6 w-6 mr-2" />
+                        <button className="flex flex-row py-2 gap-2 rounded-md border items-center text-lg font-normal px-2 text-[#198754] border-[#198754] hover:bg-[#198754] hover:text-white">
+                          <FaRegUser className="h-5 w-5 mb-1" />
                           লগইন
-                        </Button>
+                        </button>
                       </Link>
                     </>
                   )}

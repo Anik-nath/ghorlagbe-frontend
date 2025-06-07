@@ -1,7 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { CirclePlus } from "lucide-react";
 import { Link } from "react-router-dom";
-import homeicon from "../../../public/assets/icons/home 04.png";
+import { FaCirclePlus } from "react-icons/fa6";
 
 const PostAdSection = () => {
   const features = [
@@ -53,9 +51,9 @@ const PostAdSection = () => {
       <div className="text-center mt-8">
         <Link
           to="/post-ad"
-          className="bg-[#198754] hover:bg-[#157347] text-white px-6 py-3 rounded-md inline-flex items-center font-medium text-md transition-colors duration-200"
+          className="bg-[#198754] text-md hover:bg-[#157347] text-white px-4 py-2 rounded-md inline-flex items-center font-medium text-md transition-colors duration-200"
         >
-          <CirclePlus className="mr-2 w-6 h-6" />
+          <FaCirclePlus className="mr-2 w-5 h-5" />
           এখন পোস্ট করুন
         </Link>
       </div>

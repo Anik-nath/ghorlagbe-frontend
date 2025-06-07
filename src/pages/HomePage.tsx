@@ -27,7 +27,7 @@ const HomePage = () => {
 
           {/* Search Bar */}
           <div className="max-w-4xl mx-auto bg-white rounded-full py-5 px-6 shadow-lg">
-            <div className="flex flex-col justify-between md:flex-row gap-4 items-center border rounded-md">
+            <div className="flex flex-row justify-between gap-4 items-center border rounded-md">
               <div className="flex items-center w-full md:w-auto">
                 <div className="bg-gray-50 rounded-md rounded-r-none h-12 w-12 flex items-center justify-center ">
                   <Search className="w-6 h-6 text-black font-bold" />
