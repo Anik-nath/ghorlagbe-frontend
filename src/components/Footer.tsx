@@ -1,20 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Phone, Mail } from "lucide-react";
+import logo from "/assets/logo-main.png";
+import { FaFacebook, FaYoutube, FaInstagram } from "react-icons/fa";
 import {
-  House,
-  Phone,
-  Mail,
-  MapPin,
-  Facebook,
-  Youtube,
-  Instagram,
-} from "lucide-react";
-import logo from "../../public/assets/logo-main.png";
+  FaAndroid,
+  FaApple,
+  FaEnvelope,
+  FaPhone,
+  FaXTwitter,
+} from "react-icons/fa6";
+
 const Footer = () => {
   return (
     <footer className="bg-[#04331d] text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 ">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-5 pb-8">
           {/* Brand Section */}
           <div className="col-span-1 md:col-span-2">
             {/* Logo */}
@@ -37,13 +38,11 @@ const Footer = () => {
           {/* Services Section */}
           <div>
             <h3 className="font-bold text-xl mb-4">আমাদের সম্পর্কে</h3>
-            <ul
-              className="space-y-2  text-white text-lg"
-            >
+            <ul className="space-y-2 text-white text-lg font-normal ">
               <li>
                 <Link
                   to="/about"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-black transition-colors"
                 >
                   ঘর লাগবে সম্পর্কে
                 </Link>
@@ -51,7 +50,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/about"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-black  transition-colors"
                 >
                   যোগাযোগ
                 </Link>
@@ -59,7 +58,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/about"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-black  transition-colors"
                 >
                   শর্তাবলী এবং গোপনীয়তা
                 </Link>
@@ -67,7 +66,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/about"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-black  transition-colors"
                 >
                   গোপনীয়তা নীতি
                 </Link>
@@ -76,38 +75,50 @@ const Footer = () => {
           </div>
 
           {/* Contact Section */}
-          <div>
-            <h3
-              className="font-bold text-white text-xl mb-4"
-            >
-              যোগাযোগ | সাহায্য দরকার?
-            </h3>
-            <div className="space-y-1 text-white font-medium text-lg">
-              <h1>যোগাযোগ করুন</h1>
-              <div className="flex items-center space-x-2">
-                <Phone className="h-4 w-4" />
-                <span>+88 01815 123456</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Mail className="h-4 w-4" />
-                <span>support@ghorlagbe.com</span>
-              </div>
-              <div className="text-lg">
-                <p>Mon to Fri: 9am – 8.30pm</p>
-                <p>Weekends: 10am – 7.30pm</p>
-              </div>
-            </div>
-
-            {/* Social Media */}
-            <div className="mt-6 flex items-center">
-              <p className="text-lg">সোশ্যাল নেটওয়ার্কে আমরা:</p>
-              <div className="flex space-x-2">
-                <Facebook className="h-5 w-5 text-gray-300 hover:text-white cursor-pointer transition-colors" />
-                <div className="h-5 w-5 text-gray-300 hover:text-white cursor-pointer transition-colors">
-                  𝕏
+          <div className="col-span-1 md:col-span-2 flex md:flex-col md:items-end">
+            <div>
+              <h3 className="font-bold text-white text-xl mb-4 ">
+                যোগাযোগ | সাহায্য দরকার?
+              </h3>
+              <div className="space-y-1 text-white font-normal text-lg ">
+                <h1 className="hover:text-black transition-colors">
+                  যোগাযোগ করুন
+                </h1>
+                <div className="flex items-center space-x-2 cursor-pointer hover:text-black transition-colors">
+                  <FaPhone className="h-4 w-4" />
+                  <span>+88 01815 123456</span>
                 </div>
-                <Youtube className="h-5 w-5 text-gray-300 hover:text-white cursor-pointer transition-colors" />
-                <Instagram className="h-5 w-5 text-gray-300 hover:text-white cursor-pointer transition-colors" />
+                <div className="flex items-center space-x-2 cursor-pointer hover:text-black transition-colors">
+                  <FaEnvelope className="h-4 w-4" />
+                  <span>support@ghorlagbe.com</span>
+                </div>
+                <div className="text-lg ">
+                  <p className="hover:text-black transition-colors">
+                    Mon to Fri: 9am – 8.30pm
+                  </p>
+                  <p className="hover:text-black transition-colors">
+                    Weekends: 10am – 7.30pm
+                  </p>
+                </div>
+              </div>
+
+              {/* Social Media */}
+              <div className="mt-6 flex flex-row items-center gap-1">
+                <p className="text-xl mr-2">সোশ্যাল নেটওয়ার্কে আমরা:</p>
+                <div className="flex space-x-4">
+                  <Link to="https://ghor.saifmorshed.com/#">
+                    <FaFacebook className="h-5 w-5" />
+                  </Link>
+                  <Link to="https://ghor.saifmorshed.com/#">
+                    <FaXTwitter className="h-5 w-5" />
+                  </Link>
+                  <Link to="https://ghor.saifmorshed.com/#">
+                    <FaYoutube className="h-6 w-6" />
+                  </Link>
+                  <Link to="https://ghor.saifmorshed.com/#">
+                    <FaInstagram className="h-6 w-6" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -115,11 +126,20 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <div className="border-t border-gray-100 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <div className="text-xl text-white font-bold mb-4 md:mb-0">
-            <span>GhorLagbe apps (free)</span>
-            <span className="mx-2">📱 iOS app</span>
-            <span>🤖 Android app</span>
-          </div>
+          <Link to="https://ghor.saifmorshed.com/">
+            <div className="flex flex-row items-center text-xl text-white font-bold mb-4 md:mb-0">
+              <span>GhorLagbe apps (free)</span>
+
+              <span className="mx-2 flex flex-row items-center ">
+                <FaApple className="w-5 h-5 mb-2" />
+                iOS app
+              </span>
+
+              <span className="flex flex-row items-center ">
+                <FaAndroid className="w-5 h-5 mr-2" /> Android app
+              </span>
+            </div>
+          </Link>
           <div className="text-lg text-gray-100">
             © 2022-2024 GhorLagbe Ltd.
           </div>

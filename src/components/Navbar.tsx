@@ -23,7 +23,7 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { useAuth } from "@/contexts/AuthContext";
-import logo from "../../public/assets/logo-main.png"; 
+import logo from "/assets/logo-main.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
