@@ -1,10 +1,10 @@
 import Mission from "@/components/About/Misson";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Clock, Mail, MessageCircle } from "lucide-react";
+import { Clock, Mail } from "lucide-react";
 import React, { useState } from "react";
 import { FaPhoneAlt } from "react-icons/fa";
 import {
@@ -19,11 +19,12 @@ import { Link } from "react-router-dom";
 const ContactPage = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
+    firstname: "",
+    lastname: "",
     phone: "",
+    email: "",
     subject: "",
-    message: "",
+    comment: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -33,11 +34,12 @@ const ContactPage = () => {
       description: "আপনার বার্তা পাঠানো হয়েছে। আমরা শীঘ্রই যোগাযোগ করব।",
     });
     setFormData({
-      name: "",
-      email: "",
+      firstname: "",
+      lastname: "",
       phone: "",
+      email: "",
       subject: "",
-      message: "",
+      comment: "",
     });
   };
 
