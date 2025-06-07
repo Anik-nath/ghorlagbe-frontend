@@ -10,6 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import AdsCard from "@/components/Ads/AdsCard";
 
 const AdsPage = () => {
   const [filters, setFilters] = useState({
@@ -43,48 +44,78 @@ const AdsPage = () => {
       },
     }));
   };
+  interface Property {
+    id: number;
+    title: string;
+    price: string;
+    day: string;
+    location: string;
+    beds: number;
+    bathrooms: number;
+  }
 
-  const properties = [
+  const properties: Property[] = [
     {
       id: 1,
       title: "বাস এ বিশুদ্ধ জুবির সঙ অ্যাপার্টমেন্ট ঘর ভাড়া নেওয়া হবে",
-      rent: "3000",
+      price: "৳ 3000",
+      day: "30",
       location: "Fotika, hathazari, চট্টগ্রাম, চট্টগ্রাম",
       beds: 3,
       bathrooms: 2,
-      image:
-        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300&q=80",
-      verified: true,
     },
     {
       id: 2,
       title:
-        "একটি সম্পূর্ণ প্রস্তুত ফ্ল্যাট পাওয়া এবং রয়েছে হবে ভাড়া নেওয়া হবে",
-      rent: "5000",
-      location: "Fatebad, চট্টগ্রাম, চট্টগ্রাম",
-      beds: 3,
+        "একটি সম্পূর্ণ প্রস্তুত ফ্ল্যাট ভাড়া দেওয়া হবে 3 বেড এবং গ্যাস সহ",
+      price: "৳ 5000",
+      day: "30",
+      location: "বনানী, ঢাকা",
+      beds: 2,
       bathrooms: 2,
-      image:
-        "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300&q=80",
-      verified: true,
     },
     {
       id: 3,
       title:
-        "ব্যাচেলর ও ব্যাসেসর প্রাস ভাডা বাড়িটিতে সাস রাব রূপে আবাসন ব্যাংকের",
-      rent: "7000",
-      location: "Pauzan Purashaiba, চট্টগ্রাম, চট্টগ্রাম",
+        "ফ্যামিলি ও ব্যাচেলর বাসা ভাড়া রাউজান সদর এ - লাইনের গ্যাস সুবিধা আছে",
+      price: "৳ 4000",
+      day: "30",
+      location: "মিরপুর, ঢাকা",
+      beds: 3,
+      bathrooms: 1,
+    },
+    {
+      id: 4,
+      title: "সিটি সেন্টারের কাছে ফ্ল্যাট",
+      price: "৳ 6000",
+      day: "30",
+      location: "গুলশান, ঢাকা",
+      beds: 4,
+      bathrooms: 3,
+    },
+    {
+      id: 5,
+      title: "বড় রুমের বাসা ভাড়া",
+      price: "৳ 3500",
+      day: "30",
+      location: "উত্তরা, ঢাকা",
+      beds: 2,
+      bathrooms: 1,
+    },
+    {
+      id: 6,
+      title: "নতুন বিল্ডিংয়ের ফ্ল্যাট",
+      price: "৳ 4500",
+      day: "30",
+      location: "মোহাম্মদপুর, ঢাকা",
       beds: 3,
       bathrooms: 2,
-      image:
-        "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300&q=80",
-      verified: true,
     },
   ];
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-8 py-8">
         {/* Search Header */}
         <div className="bg-white rounded-lg p-6 shadow-sm mb-6">
           <div className="flex flex-col md:flex-row gap-4">
@@ -424,47 +455,11 @@ const AdsPage = () => {
               </CardContent>
             </Card>
           </div>
-
           {/* Properties Grid */}
           <div className="flex-1">
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
               {properties.map((property) => (
-                <Card
-                  key={property.id}
-                  className="overflow-hidden hover:shadow-lg transition-shadow"
-                >
-                  <div className="relative">
-                    <img
-                      src={property.image}
-                      alt={property.title}
-                      className="w-full h-48 object-cover"
-                    />
-                    {property.verified && (
-                      <div className="absolute top-2 left-2 bg-green-600 text-white px-2 py-1 rounded text-xs">
-                        Verified
-                      </div>
-                    )}
-                    <button className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-md hover:bg-gray-100">
-                      <Heart className="h-4 w-4 text-gray-600" />
-                    </button>
-                  </div>
-                  <CardContent className="p-4">
-                    <h3 className="font-medium text-sm mb-2 line-clamp-2">
-                      {property.title}
-                    </h3>
-                    <p className="text-green-600 font-bold text-lg mb-2">
-                      ৳ {property.rent}/৩০
-                    </p>
-                    <div className="flex items-start space-x-1 text-gray-600 text-xs mb-3">
-                      <MapPin className="h-3 w-3 mt-0.5 flex-shrink-0" />
-                      <span className="line-clamp-2">{property.location}</span>
-                    </div>
-                    <div className="flex justify-between text-xs text-gray-600">
-                      <span>{property.beds} Beds</span>
-                      <span>{property.bathrooms} Bathrooms</span>
-                    </div>
-                  </CardContent>
-                </Card>
+                <AdsCard key={property.id} property={property} />
               ))}
             </div>
           </div>
