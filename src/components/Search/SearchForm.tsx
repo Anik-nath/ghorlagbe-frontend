@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 const SearchForm = ({ setSearchType }) => {
   return (
-    <div className="max-w-6xl mx-auto bg-white rounded-md p-6 border">
+    <div className="bg-white rounded-md p-6 border">
       <div className="grid grid-cols-1 md:grid-cols-6 gap-2 items-center">
         <div className="relative md:col-span-3">
           <span className="absolute inset-y-0 left-0 flex items-center p-3 border border-l-0">

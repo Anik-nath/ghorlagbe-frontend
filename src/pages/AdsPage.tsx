@@ -11,6 +11,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import AdsCard from "@/components/Ads/AdsCard";
+import SearchForm from "@/components/Search/SearchForm";
 
 const AdsPage = () => {
   const [filters, setFilters] = useState({
@@ -114,34 +115,12 @@ const AdsPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen ">
       <div className="max-w-7xl mx-auto px-8 py-8">
         {/* Search Header */}
-        <div className="bg-white rounded-lg p-6 shadow-sm mb-6">
-          <div className="flex flex-col md:flex-row gap-4">
-            <Input placeholder="খুঁজুন ফ্ল্যাট / সিট রুম" className="flex-1" />
-            <Select>
-              <SelectTrigger className="w-full md:w-48">
-                <SelectValue placeholder="শহর" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="dhaka">ঢাকা</SelectItem>
-                <SelectItem value="chittagong">চট্টগ্রাম</SelectItem>
-              </SelectContent>
-            </Select>
-            <Select>
-              <SelectTrigger className="w-full md:w-48">
-                <SelectValue placeholder="এলাকা" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="dhanmondi">ধানমন্ডি</SelectItem>
-                <SelectItem value="gulshan">গুলশান</SelectItem>
-              </SelectContent>
-            </Select>
-            <Button className="bg-green-600 hover:bg-green-700">খুঁজুন</Button>
-          </div>
+        <div className="max-w-7xl mb-14">
+          <SearchForm setSearchType={() => {}} />
         </div>
-
         <div className="flex flex-col lg:flex-row gap-6">
           {/* Filters Sidebar */}
           <div className="lg:w-80">
@@ -455,6 +434,7 @@ const AdsPage = () => {
               </CardContent>
             </Card>
           </div>
+
           {/* Properties Grid */}
           <div className="flex-1">
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">

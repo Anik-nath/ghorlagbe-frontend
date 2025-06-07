@@ -65,7 +65,9 @@ const SearchPage = () => {
 
           {/* Search Form */}
           {searchType === "খুঁজুন" ? (
-            <SearchForm setSearchType={setSearchType} />
+            <div className="max-w-6xl mx-auto">
+              <SearchForm setSearchType={setSearchType} />
+            </div>
           ) : (
             <PropertiesDetailsFrom
               lift={lift}
