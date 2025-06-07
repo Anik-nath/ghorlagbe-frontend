@@ -5,14 +5,40 @@ import { Input } from "@/components/ui/input";
 import Mission from "@/components/About/Misson";
 
 const SearchPage = () => {
-  const [searchType, setSearchType] = useState("খুঁজুন");
-  const [lift, setLift] = useState<string>(""); // "" | "yes" | "no"
-  const [generator, setGenerator] = useState<string>("");
-  const [guard, setGuard] = useState<string>("");
-  const [parking, setParking] = useState<string>("");
-  const [wifi, setWifi] = useState<string>("");
-  const [gas, setGas] = useState<string>(""); // "line", "silendar", "no"
-  const [security, setSecurity] = useState<string>("");
+  const [form, setForm] = useState({
+    searchType: "খুঁজুন",
+    lift: "",
+    generator: "",
+    parking: "",
+    wifi: "",
+    gas: "",
+    security: "",
+  });
+
+  const setSearchType = (searchType: string) =>
+    setForm((prev) => ({ ...prev, searchType }));
+  const setLift = (lift: string) =>
+    setForm((prev) => ({ ...prev, lift }));
+  const setGenerator = (generator: string) =>
+    setForm((prev) => ({ ...prev, generator }));
+  const setParking = (parking: string) =>
+    setForm((prev) => ({ ...prev, parking }));
+  const setWifi = (wifi: string) =>
+    setForm((prev) => ({ ...prev, wifi }));
+  const setGas = (gas: string) =>
+    setForm((prev) => ({ ...prev, gas }));
+  const setSecurity = (security: string) =>
+    setForm((prev) => ({ ...prev, security }));
+
+  const {
+    searchType,
+    lift,
+    generator,
+    parking,
+    wifi,
+    gas,
+    security,
+  } = form;
 
   return (
     <div className="min-h-screen bg-white">
