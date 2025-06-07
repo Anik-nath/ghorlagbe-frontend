@@ -29,7 +29,7 @@ const SearchPage = () => {
   const { searchType, lift, generator, parking, wifi, gas, security } = form;
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="bg-white">
       <div className="container mx-auto px-4 py-8">
         {/* Page Header */}
         <div className="text-center mb-8">
