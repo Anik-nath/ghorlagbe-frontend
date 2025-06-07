@@ -49,7 +49,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/about"
+                  to="/contact"
                   className="hover:text-black  transition-colors"
                 >
                   যোগাযোগ
@@ -57,7 +57,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/about"
+                  to="/terms-condition"
                   className="hover:text-black  transition-colors"
                 >
                   শর্তাবলী এবং গোপনীয়তা
@@ -65,7 +65,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/about"
+                  to="/privacy-policy"
                   className="hover:text-black  transition-colors"
                 >
                   গোপনীয়তা নীতি

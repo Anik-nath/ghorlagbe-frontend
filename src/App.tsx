@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -21,6 +20,7 @@ import FavoritesPage from "./pages/FavoritesPage";
 import ContactPage from "./pages/ContactPage";
 import UpgradePage from "./pages/UpgradePage";
 import NotFound from "./pages/NotFound";
+import ResetPassword from "./pages/ResetPassword";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +40,7 @@ const App = () => (
               <Route path="/about" element={<AboutPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/login" element={<LoginPage />} />
+              <Route path="/password/reset" element={<ResetPassword />} />
               <Route path="/post-ad" element={<PostAdPage />} />
               <Route path="/profile" element={<ProfilePage />} />
               <Route path="/post-rent" element={<PostRentPage />} />
