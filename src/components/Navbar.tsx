@@ -33,7 +33,7 @@ const Navbar = () => {
   const navigation = [
     { name: "অনুসন্ধান", href: "/search" },
     { name: "সব বিজ্ঞাপন", href: "/ads" },
-    { name: "আমাদের সম্পর্কে", href: "/about" },
+
     {
       name: "অ্যাকাউন্ট",
       href: isAuthenticated ? "/profile" : "/login",
@@ -44,6 +44,7 @@ const Navbar = () => {
         }
       },
     },
+    { name: "আমাদের সম্পর্কে", href: "/about" },
   ];
 
   const accountMenuItems = [
@@ -61,7 +62,12 @@ const Navbar = () => {
     logout();
     navigate("/");
   };
-
+  const handlePostAdClick = (e: React.MouseEvent) => {
+    if (!isAuthenticated) {
+      e.preventDefault();
+      navigate("/login");
+    }
+  };
   return (
     <nav className="bg-white border-b border-gray-200  z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -85,7 +91,7 @@ const Navbar = () => {
                 onClick={item.onClick}
                 className={`px-2 py-2 text-lg font-normal transition-colors duration-200 ${
                   isActive(item.href)
-                    ? "text-[#198754] border-b-2 border-[#198754]"
+                    ? "text-[#198754] border-[#198754]"
                     : "text-gray-700 hover:text-[#198754]"
                 }`}
               >
@@ -148,6 +154,7 @@ const Navbar = () => {
               <>
                 <Link to="/post-ad">
                   <Button
+                    onClick={handlePostAdClick}
                     variant="ghost"
                     size="sm"
                     className="text-lg text-[#198754] hover:bg-transparent hover:text-[#198754] flex items-center"
@@ -274,7 +281,16 @@ const Navbar = () => {
                     </Link>
                   ) : (
                     <>
-                      <Link to="/post-ad" onClick={() => setIsOpen(false)}>
+                      <Link
+                        to="/post-ad"
+                        onClick={(e) => {
+                          setIsOpen(false);
+                          if (!isAuthenticated) {
+                            e.preventDefault();
+                            navigate("/login");
+                          }
+                        }}
+                      >
                         <Button
                           variant="ghost"
                           size="sm"
