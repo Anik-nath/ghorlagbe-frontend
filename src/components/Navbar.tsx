@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useAuth } from "@/contexts/AuthContext";
 import logo from "/assets/logo-main.png";
-import { FaPlusCircle, FaUserPlus } from "react-icons/fa";
+import { FaCaretDown, FaPlusCircle, FaUserPlus } from "react-icons/fa";
 import { FaRegUser } from "react-icons/fa6";
 
 const Navbar = () => {
@@ -107,7 +107,7 @@ const Navbar = () => {
                 <Link to="/post-rent">
                   <Button
                     size="sm"
-                    className="bg-yellow-400 hover:bg-yellow-300 text-black"
+                    className="bg-[#ffc107] text-lg font-normal hover:bg-[#ffcc32] text-black"
                   >
                     ফ্রি বিজ্ঞাপন
                   </Button>
@@ -119,14 +119,14 @@ const Navbar = () => {
                       size="sm"
                       className="flex items-center hover:bg-transparent"
                     >
-                      <span className="text-sm font-medium">
+                      <span className="text-xl text-[#157347] font-medium">
                         Hi! {user?.name}
                       </span>
                       <div className="flex items-center flex-1 flex-row">
-                        <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                          <User className="h-4 w-4 text-green-600" />
+                        <div className="w-14 h-14 bg-gray-100 rounded-full flex items-center justify-center">
+                          <User className="h-4 w-4 text-gray-600" />
                         </div>
-                        <ChevronDown className="h-4 w-4" />
+                        <FaCaretDown className="h-4 w-4 ml-1" />
                       </div>
                     </Button>
                   </DropdownMenuTrigger>
@@ -274,7 +274,7 @@ const Navbar = () => {
                     <Link to="/post-rent" onClick={() => setIsOpen(false)}>
                       <Button
                         size="sm"
-                        className="w-full bg-yellow-400 hover:bg-yellow-300 text-black"
+                        className="bg-[#ffc107] text-lg font-normal hover:bg-[#ffcc32] text-black"
                       >
                         ফ্রি বিজ্ঞাপন
                       </Button>
