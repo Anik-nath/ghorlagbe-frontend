@@ -13,7 +13,6 @@ const PropertiesDetailsFrom = ({
   wifi,
   gas,
   security,
-
 }) => {
   return (
     <div className="max-w-6xl mx-auto bg-white rounded-lg p-10 border">
@@ -50,7 +49,7 @@ const PropertiesDetailsFrom = ({
                     type="checkbox"
                     name="rentfor[]"
                     value={item.value}
-                    className="h-4 w-4"
+                    className="h-4 w-4 text-[#198754] !rounded border border-[#198754] focus:ring-[#198754] accent-[#198754]"
                   />
                   <span className="text-lg text-gray-900">{item.label}</span>
                 </label>

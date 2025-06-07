@@ -1,8 +1,6 @@
-import React, { useState } from "react";
-import { Heart, MapPin, ChevronDown } from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -13,47 +11,24 @@ import {
 import AdsCard from "@/components/Ads/AdsCard";
 import SearchForm from "@/components/Search/SearchForm";
 
-const AdsPage = () => {
-  const [filters, setFilters] = useState({
-    propertyType: "",
-    category: "",
-    district: "",
-    area: "",
-    rent: "",
-    facilities: {
-      electricity: { available: false, notAvailable: false },
-      generator: { available: false, notAvailable: false },
-      security: { available: false, notAvailable: false },
-      parking: { available: false, notAvailable: false },
-      gas: { available: false, notAvailable: false },
-      wifi: { available: false, notAvailable: false },
-    },
-  });
+interface Property {
+  id: number;
+  title: string;
+  price: string;
+  day: string;
+  location: string;
+  beds: number;
+  bathrooms: number;
+}
 
-  const toggleFacility = (
-    facility: string,
-    type: "available" | "notAvailable"
-  ) => {
-    setFilters((prev) => ({
-      ...prev,
-      facilities: {
-        ...prev.facilities,
-        [facility]: {
-          ...prev.facilities[facility],
-          [type]: !prev.facilities[facility][type],
-        },
-      },
-    }));
-  };
-  interface Property {
-    id: number;
-    title: string;
-    price: string;
-    day: string;
-    location: string;
-    beds: number;
-    bathrooms: number;
-  }
+const AdsPage = () => {
+  // Facilities state
+  const [lift, setLift] = useState<"yes" | "no" | "">("");
+  const [generator, setGenerator] = useState<"yes" | "no" | "">("");
+  const [security, setSecurity] = useState<"yes" | "no" | "">("");
+  const [parking, setParking] = useState<"yes" | "no" | "">("");
+  const [gas, setGas] = useState<"line" | "silendar" | "no" | "">("");
+  const [wifi, setWifi] = useState<"yes" | "no" | "">("");
 
   const properties: Property[] = [
     {
@@ -128,7 +103,7 @@ const AdsPage = () => {
               <CardContent className="p-6 space-y-6">
                 {/* Property Type */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-900 mb-3">
+                  <label className="block text-md font-medium text-gray-900 mb-3">
                     প্রশাসনিক ধরণ:
                   </label>
                   <Select>
@@ -146,7 +121,7 @@ const AdsPage = () => {
 
                 {/* Category */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-900 mb-3">
+                  <label className="block text-md font-medium text-gray-900 mb-3">
                     ভাড়ার ধরন:
                   </label>
                   <div className="space-y-2">
@@ -167,9 +142,9 @@ const AdsPage = () => {
                       >
                         <input
                           type="checkbox"
-                          className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
+                          className="h-4 w-4 text-[#198754] !rounded border border-[#198754] focus:ring-[#198754] accent-[#198754]"
                         />
-                        <span className="text-sm text-gray-700">{type}</span>
+                        <span className="text-md text-gray-700">{type}</span>
                       </label>
                     ))}
                   </div>
@@ -177,7 +152,7 @@ const AdsPage = () => {
 
                 {/* Location */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-900 mb-3">
+                  <label className="block text-md font-medium text-gray-900 mb-3">
                     অবস্থান:
                   </label>
                   <div className="grid grid-cols-2 gap-3">
@@ -204,7 +179,7 @@ const AdsPage = () => {
 
                 {/* Rent Range */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-900 mb-3">
+                  <label className="block text-md font-medium text-gray-900 mb-3">
                     ভেন্ট রেঞ্জ:
                   </label>
                   <Select>
@@ -221,7 +196,7 @@ const AdsPage = () => {
 
                 {/* Area Range */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-900 mb-3">
+                  <label className="block text-md font-medium text-gray-900 mb-3">
                     ওয়েল এরিয়া:
                   </label>
                   <Select>
@@ -241,194 +216,267 @@ const AdsPage = () => {
                 </div>
 
                 {/* Facilities with Toggle Buttons */}
-                <div className="space-y-4">
-                  {/* Electricity */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-2">
-                      বিদ্যুৎ সুবিধা:
-                    </label>
-                    <div className="flex gap-2">
+                {/* লিফট সুবিধা */}
+                <div className="flex items-start  gap-4 mb-4">
+                  <label className="w-full text-left text-md text-nowrap">
+                    লিফট সুবিধা:
+                  </label>
+                  <div className="w-full flex">
+                    <div className="flex items-center rounded-full overflow-hidden">
+                      {/* আছে Button */}
                       <button
-                        onClick={() =>
-                          toggleFacility("electricity", "available")
-                        }
-                        className={`px-4 py-1 text-sm rounded-full border transition-colors ${
-                          filters.facilities.electricity.available
-                            ? "bg-green-600 text-white border-green-600"
-                            : "bg-white text-gray-700 border-gray-300 hover:border-green-600"
+                        type="button"
+                        onClick={() => setLift("yes")}
+                        className={`flex items-center px-4 py-1 border border-r-0 border-[#157347] rounded-l-full transition-colors ${
+                          lift === "yes"
+                            ? "bg-[#157347] text-white"
+                            : "text-[#157347]"
                         }`}
                       >
+                        {lift === "yes" && (
+                          <span className="mr-2 text-white">✔</span>
+                        )}
                         আছে
                       </button>
+
+                      {/* নেই Button */}
                       <button
-                        onClick={() =>
-                          toggleFacility("electricity", "notAvailable")
-                        }
-                        className={`px-4 py-1 text-sm rounded-full border transition-colors ${
-                          filters.facilities.electricity.notAvailable
-                            ? "bg-green-600 text-white border-green-600"
-                            : "bg-white text-gray-700 border-gray-300 hover:border-green-600"
+                        type="button"
+                        onClick={() => setLift("no")}
+                        className={`flex items-center px-4 py-1 border border-gray-700 rounded-r-full transition-colors ${
+                          lift === "no"
+                            ? "bg-gray-900 text-white"
+                            : "text-gray-700"
                         }`}
                       >
-                        নাই
+                        {lift === "no" && (
+                          <span className="mr-2 text-white">✔</span>
+                        )}
+                        নেই
                       </button>
                     </div>
                   </div>
 
-                  {/* Generator */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-2">
-                      জেনারেটর সুবিধা:
-                    </label>
-                    <div className="flex gap-2">
+                  {/* Hidden radio input for form submission */}
+                  <input type="hidden" name="lift" value={lift} />
+                </div>
+
+                {/* জেনেরেটর সুবিধা */}
+                <div className="flex items-start gap-4">
+                  <label className="w-full text-left text-md text-nowrap">
+                    জেনেরেটর সুবিধা:
+                  </label>
+                  <div className="w-full flex">
+                    <div className="flex items-center rounded-full overflow-hidden">
                       <button
-                        onClick={() => toggleFacility("generator", "available")}
-                        className={`px-4 py-1 text-sm rounded-full border transition-colors ${
-                          filters.facilities.generator.available
-                            ? "bg-green-600 text-white border-green-600"
-                            : "bg-white text-gray-700 border-gray-300 hover:border-green-600"
+                        type="button"
+                        onClick={() => setGenerator("yes")}
+                        className={`flex items-center px-4 py-1 border border-r-0 border-[#157347] rounded-l-full transition-colors ${
+                          generator === "yes"
+                            ? "bg-[#157347] text-white"
+                            : "text-[#157347]"
                         }`}
                       >
+                        {generator === "yes" && (
+                          <span className="mr-2 text-white">✔</span>
+                        )}
                         আছে
                       </button>
                       <button
-                        onClick={() =>
-                          toggleFacility("generator", "notAvailable")
-                        }
-                        className={`px-4 py-1 text-sm rounded-full border transition-colors ${
-                          filters.facilities.generator.notAvailable
-                            ? "bg-green-600 text-white border-green-600"
-                            : "bg-white text-gray-700 border-gray-300 hover:border-green-600"
+                        type="button"
+                        onClick={() => setGenerator("no")}
+                        className={`flex items-center px-4 py-1 border border-gray-700 rounded-r-full transition-colors ${
+                          generator === "no"
+                            ? "bg-gray-900 text-white"
+                            : "text-gray-700"
                         }`}
                       >
-                        নাই
+                        {generator === "no" && (
+                          <span className="mr-2 text-white">✔</span>
+                        )}
+                        নেই
                       </button>
                     </div>
                   </div>
+                  <input type="hidden" name="generator" value={generator} />
+                </div>
 
-                  {/* Security Guard */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-2">
-                      সিকিউরিটি গার্ড:
-                    </label>
-                    <div className="flex gap-2">
+                {/* সিকিউরিটি গার্ড */}
+                <div className="flex items-start gap-4">
+                  <label className="w-full text-left text-md text-nowrap">
+                    সিকিউরিটি গার্ড:
+                  </label>
+                  <div className="w-full flex">
+                    <div className="flex items-center rounded-full overflow-hidden">
                       <button
-                        onClick={() => toggleFacility("security", "available")}
-                        className={`px-4 py-1 text-sm rounded-full border transition-colors ${
-                          filters.facilities.security.available
-                            ? "bg-green-600 text-white border-green-600"
-                            : "bg-white text-gray-700 border-gray-300 hover:border-green-600"
+                        type="button"
+                        onClick={() => setSecurity("yes")}
+                        className={`flex items-center px-4 py-1 border border-r-0 border-[#157347] rounded-l-full transition-colors ${
+                          security === "yes"
+                            ? "bg-[#157347] text-white"
+                            : "text-[#157347]"
                         }`}
                       >
+                        {security === "yes" && (
+                          <span className="mr-2 text-white">✔</span>
+                        )}
                         আছে
                       </button>
                       <button
-                        onClick={() =>
-                          toggleFacility("security", "notAvailable")
-                        }
-                        className={`px-4 py-1 text-sm rounded-full border transition-colors ${
-                          filters.facilities.security.notAvailable
-                            ? "bg-green-600 text-white border-green-600"
-                            : "bg-white text-gray-700 border-gray-300 hover:border-green-600"
+                        type="button"
+                        onClick={() => setSecurity("no")}
+                        className={`flex items-center px-4 py-1 border border-gray-700 rounded-r-full transition-colors ${
+                          security === "no"
+                            ? "bg-gray-900 text-white"
+                            : "text-gray-700"
                         }`}
                       >
-                        নাই
+                        {security === "no" && (
+                          <span className="mr-2 text-white">✔</span>
+                        )}
+                        নেই
                       </button>
                     </div>
                   </div>
+                  <input type="hidden" name="security" value={security} />
+                </div>
 
-                  {/* Parking */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-2">
-                      পার্কিং সুবিধা:
-                    </label>
-                    <div className="flex gap-2">
+                {/* পার্কিং সুবিধা */}
+                <div className="flex items-start gap-4">
+                  <label className="w-full text-left text-md text-nowrap">
+                    পার্কিং সুবিধা:
+                  </label>
+                  <div className="w-full flex">
+                    <div className="flex items-center rounded-full overflow-hidden">
                       <button
-                        onClick={() => toggleFacility("parking", "available")}
-                        className={`px-4 py-1 text-sm rounded-full border transition-colors ${
-                          filters.facilities.parking.available
-                            ? "bg-green-600 text-white border-green-600"
-                            : "bg-white text-gray-700 border-gray-300 hover:border-green-600"
+                        type="button"
+                        onClick={() => setParking("yes")}
+                        className={`flex items-center px-4 py-1 border border-r-0 border-[#157347] rounded-l-full transition-colors ${
+                          parking === "yes"
+                            ? "bg-[#157347] text-white"
+                            : "text-[#157347]"
                         }`}
                       >
+                        {parking === "yes" && (
+                          <span className="mr-2 text-white">✔</span>
+                        )}
                         আছে
                       </button>
                       <button
-                        onClick={() =>
-                          toggleFacility("parking", "notAvailable")
-                        }
-                        className={`px-4 py-1 text-sm rounded-full border transition-colors ${
-                          filters.facilities.parking.notAvailable
-                            ? "bg-green-600 text-white border-green-600"
-                            : "bg-white text-gray-700 border-gray-300 hover:border-green-600"
+                        type="button"
+                        onClick={() => setParking("no")}
+                        className={`flex items-center px-4 py-1 border border-gray-700 rounded-r-full transition-colors ${
+                          parking === "no"
+                            ? "bg-gray-900 text-white"
+                            : "text-gray-700"
                         }`}
                       >
-                        নাই
+                        {parking === "no" && (
+                          <span className="mr-2 text-white">✔</span>
+                        )}
+                        নেই
                       </button>
                     </div>
                   </div>
+                  <input type="hidden" name="parking" value={parking} />
+                </div>
 
-                  {/* Gas */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-2">
-                      গ্যাস সুবিধা:
-                    </label>
-                    <div className="flex gap-2">
+                {/* গ্যাস সুবিধা */}
+                <div className="flex flex-col items-start gap-4">
+                  <label className="w-full text-left text-md text-nowrap">
+                    গ্যাস সুবিধা:
+                  </label>
+                  <div className="w-full flex">
+                    <div className="flex items-center rounded-full overflow-hidden">
                       <button
-                        onClick={() => toggleFacility("gas", "available")}
-                        className={`px-4 py-1 text-sm rounded-full border transition-colors ${
-                          filters.facilities.gas.available
-                            ? "bg-green-600 text-white border-green-600"
-                            : "bg-white text-gray-700 border-gray-300 hover:border-green-600"
+                        type="button"
+                        onClick={() => setGas("line")}
+                        className={`flex items-center px-4 py-1 border border-r-0 border-[#157347] rounded-l-full transition-colors ${
+                          gas === "line"
+                            ? "bg-[#157347] text-white"
+                            : "text-[#157347]"
                         }`}
                       >
+                        {gas === "line" && (
+                          <span className="mr-2 text-white">✔</span>
+                        )}
+                        লাইন
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setGas("silendar")}
+                        className={`flex items-center px-4 py-1 border border-r-0 border-[#157347] transition-colors ${
+                          gas === "silendar"
+                            ? "bg-[#157347] text-white"
+                            : "text-[#157347]"
+                        }`}
+                      >
+                        {gas === "silendar" && (
+                          <span className="mr-2 text-white">✔</span>
+                        )}
                         সিলিন্ডার
                       </button>
                       <button
-                        onClick={() => toggleFacility("gas", "notAvailable")}
-                        className={`px-4 py-1 text-sm rounded-full border transition-colors ${
-                          filters.facilities.gas.notAvailable
-                            ? "bg-green-600 text-white border-green-600"
-                            : "bg-white text-gray-700 border-gray-300 hover:border-green-600"
+                        type="button"
+                        onClick={() => setGas("no")}
+                        className={`flex items-center px-4 py-1 border border-gray-700 rounded-r-full transition-colors ${
+                          gas === "no"
+                            ? "bg-gray-900 text-white"
+                            : "text-gray-700"
                         }`}
                       >
-                        নাই
+                        {gas === "no" && (
+                          <span className="mr-2 text-white">✔</span>
+                        )}
+                        নেই
                       </button>
                     </div>
                   </div>
+                  <input type="hidden" name="gas" value={gas} />
+                </div>
 
-                  {/* WiFi */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-2">
-                      WiFi সুবিধা:
-                    </label>
-                    <div className="flex gap-2">
+                {/* WIFI সুবিধা */}
+                <div className="flex items-start gap-4">
+                  <label className="w-full text-left text-md text-nowrap">
+                    WIFI সুবিধা:
+                  </label>
+                  <div className="w-full flex">
+                    <div className="flex items-center rounded-full overflow-hidden">
                       <button
-                        onClick={() => toggleFacility("wifi", "available")}
-                        className={`px-4 py-1 text-sm rounded-full border transition-colors ${
-                          filters.facilities.wifi.available
-                            ? "bg-green-600 text-white border-green-600"
-                            : "bg-white text-gray-700 border-gray-300 hover:border-green-600"
+                        type="button"
+                        onClick={() => setWifi("yes")}
+                        className={`flex items-center px-4 py-1 border border-r-0 border-[#157347] rounded-l-full transition-colors ${
+                          wifi === "yes"
+                            ? "bg-[#157347] text-white"
+                            : "text-[#157347]"
                         }`}
                       >
+                        {wifi === "yes" && (
+                          <span className="mr-1 text-white">✔</span>
+                        )}
                         আছে
                       </button>
                       <button
-                        onClick={() => toggleFacility("wifi", "notAvailable")}
-                        className={`px-4 py-1 text-sm rounded-full border transition-colors ${
-                          filters.facilities.wifi.notAvailable
-                            ? "bg-green-600 text-white border-green-600"
-                            : "bg-white text-gray-700 border-gray-300 hover:border-green-600"
+                        type="button"
+                        onClick={() => setWifi("no")}
+                        className={`flex items-center px-4 py-1 border border-gray-700 rounded-r-full transition-colors ${
+                          wifi === "no"
+                            ? "bg-gray-900 text-white"
+                            : "text-gray-700"
                         }`}
                       >
-                        নাই
+                        {wifi === "no" && (
+                          <span className="mr-2 text-white">✔</span>
+                        )}
+                        নেই
                       </button>
                     </div>
                   </div>
+                  <input type="hidden" name="wifi" value={wifi} />
                 </div>
 
                 {/* Search Button */}
-                <Button className="w-full bg-green-600 hover:bg-green-700 text-white py-3">
+                <Button className="w-full text-lg hover:bg-[#157347] bg-[#198754] text-white py-3">
                   খুঁজুন
                 </Button>
               </CardContent>
@@ -436,7 +484,7 @@ const AdsPage = () => {
           </div>
 
           {/* Properties Grid */}
-          <div className="flex-1">
+          <div className="flex-1 bg-gray-50 p-4">
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
               {properties.map((property) => (
                 <AdsCard key={property.id} property={property} />
