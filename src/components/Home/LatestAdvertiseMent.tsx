@@ -94,7 +94,7 @@ const LatestAdvertisement = () => {
                 <img
                   src="https://ghor.saifmorshed.com/storage/upload/46/pHW64W6RLGcnThifxubJB657uXaqKJKyegLLbZJS.jpg"
                   alt={property.title}
-                  className="w-full h-56 object-cover z-0"
+                  className="w-full h-56 object-cover z-0 rounded-t-md"
                   loading="lazy"
                 />
 
