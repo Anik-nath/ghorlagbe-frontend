@@ -21,6 +21,7 @@ import ContactPage from "./pages/ContactPage";
 import UpgradePage from "./pages/UpgradePage";
 import NotFound from "./pages/NotFound";
 import ResetPassword from "./pages/ResetPassword";
+import AdsDetails from "./pages/AdsDetails";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +37,7 @@ const App = () => (
               <Route path="/" element={<HomePage />} />
               <Route path="/search" element={<SearchPage />} />
               <Route path="/ads" element={<AdsPage />} />
+              <Route path="/ads/:id" element={<AdsDetails />} />
               <Route path="/updates" element={<UpdatesPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/register" element={<RegisterPage />} />

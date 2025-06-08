@@ -114,12 +114,11 @@ const Navbar = () => {
                 </Link>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="flex items-center hover:bg-transparent"
+                    <button
+                      type="button"
+                      className="flex px-2 items-center hover:bg-transparent focus-visible:border-0 focus-visible:outline-none focus-visible:ring-0"
                     >
-                      <span className="text-xl text-[#157347] font-medium">
+                      <span className="text-xl mr-2 text-[#157347] font-medium">
                         Hi! {user?.name}
                       </span>
                       <div className="flex items-center flex-1 flex-row">
@@ -128,7 +127,7 @@ const Navbar = () => {
                         </div>
                         <FaCaretDown className="h-4 w-4 ml-1" />
                       </div>
-                    </Button>
+                    </button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" className="w-56">
                     {accountMenuItems.map((item) => (

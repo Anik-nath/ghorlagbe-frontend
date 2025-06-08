@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/select";
 import AdsCard from "@/components/Ads/AdsCard";
 import SearchForm from "@/components/Search/SearchForm";
+import { Link } from "react-router-dom";
 
 interface Property {
   id: number;
@@ -487,7 +488,9 @@ const AdsPage = () => {
           <div className="flex-1 bg-gray-50 p-4">
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
               {properties.map((property) => (
-                <AdsCard key={property.id} property={property} />
+                <Link key={property.id} to={`/ads/${property.id}`}>
+                  <AdsCard property={property} />
+                </Link>
               ))}
             </div>
           </div>
