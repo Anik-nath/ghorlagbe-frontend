@@ -104,6 +104,27 @@ const AdsDetails = () => {
               অভায়লাবিলিটি: <span className="font-semibold">আছে</span>
             </div>
           </div>
+          {/* states */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 border rounded-md py-8">
+            <div className=" flex flex-col items-center">
+              <span className="text-gray-600 font-medium mb-1">বেডরুম</span>
+              <span className="text-xl ">৩</span>
+            </div>
+            <div className="  flex flex-col items-center">
+              <span className="text-gray-600 font-medium mb-1">ওয়াশরুম</span>
+              <span className="text-xl ">২</span>
+            </div>
+            <div className="  flex flex-col items-center">
+              <span className="text-gray-600 font-medium mb-1">বারান্দা</span>
+              <span className="text-xl ">১</span>
+            </div>
+            <div className=" flex flex-col items-center">
+              <span className="text-gray-600 font-medium mb-1">
+                ফ্ল্যাট কততলা
+              </span>
+              <span className="text-xl ">১</span>
+            </div>
+          </div>
           {/* detils */}
           <div className="mt-6">
             <h2 className="text-xl font-semibold mb-2 text-[#157347]">বিবরণ</h2>
@@ -120,7 +141,7 @@ const AdsDetails = () => {
               অন্যান্য সুবিধাসমূহ / ভাড়া পরিমাণ
             </h2>
             <div className="overflow-x-auto">
-              <div className="grid grid-cols-4 bg-white rounded-lg">
+              <div className="grid grid-cols-4 bg-white ">
                 <div className="font-semibold py-2 pr-4 text-gray-700">
                   সুবিধা
                 </div>
