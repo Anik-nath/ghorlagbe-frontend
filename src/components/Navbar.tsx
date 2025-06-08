@@ -182,7 +182,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2  rounded-md text-gray-700 "
+              className="p-2 rounded-md text-gray-700 "
             >
               <Menu className="h-10 w-10" />
             </button>

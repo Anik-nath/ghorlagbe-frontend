@@ -18,7 +18,7 @@ const HomePage = () => {
         }}
       >
         <div className="container mx-auto px-4 text-center text-white">
-          <h1 className="text-4xl md:text-[5rem] font-bold mb-8">
+          <h1 className="text-5xl md:text-[5rem] font-bold mb-8">
             বাড়ি খুঁজুন <span className="text-[#09B800]">সহজে</span>
           </h1>
           <p className="text-xl md:text-3xl font-normal mb-12 py-2 text-white">
