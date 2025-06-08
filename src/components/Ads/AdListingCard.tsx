@@ -1,5 +1,4 @@
-import { MapPin, BedDouble, Landmark, CheckCircle2 } from "lucide-react";
-import { FaLocationDot, FaMap, FaShieldHeart } from "react-icons/fa6";
+import { FaLocationDot, FaShieldHeart } from "react-icons/fa6";
 
 type Props = {
   title: string;
@@ -9,6 +8,7 @@ type Props = {
   price: number;
   isVerified: boolean;
   image: string;
+  isRent: boolean; // <-- added
 };
 
 export default function AdListingCard({
@@ -19,25 +19,30 @@ export default function AdListingCard({
   price,
   isVerified,
   image,
+  isRent, // <-- added
 }: Props) {
   return (
-    <div className="bg-green-300/70 p-4 rounded-md flex flex-col gap-4">
+    <div
+      className={`p-4 rounded-md flex flex-col gap-4 relative ${
+        isRent ? "bg-white" : "bg-[#acffc1]"
+      }`}
+    >
       <div className="flex gap-4">
-        <div className="flex flex-col items-center gap-2 relative">
+        <div className="flex flex-col relative max-h-40 rounded-md">
           <img
             src={image}
             alt="property"
-            className="w-full h-40 rounded-md rounded-bl-none object-cover"
+            className="md:w-80 w-full h-full rounded-md rounded-bl-none object-cover"
           />
           <button
             className="absolute bottom-0 left-0 bg-yellow-400 text-gray-800 px-3 py-1 text-md font-semibold"
             type="button"
             disabled
           >
-            ভাড়া সম্পন্ন হয়েছে
+            {isRent ? "এডিট করুন" : "ভাড়া সম্পন্ন হয়েছে"}
           </button>
         </div>
-        <div className="flex flex-col justify-between flex-1 relative">
+        <div className="flex flex-col justify-between w-full border-b">
           {/* details */}
           <div>
             <h2 className="text-2xl font-normal">{title}</h2>
@@ -45,7 +50,7 @@ export default function AdListingCard({
               <FaLocationDot className="w-4 h-4 text-yellow-400" />
               {location}
             </p>
-            <div className="flex gap-4 mt-3 text-md bg-white w-fit px-2 py-1">
+            <div className="flex gap-4 mt-3 text-md bg-gray-50 w-fit px-2 py-1">
               <p className="flex items-center gap-1">বেড: {beds}</p>
               <p className="flex items-center gap-1">বাথরুম: {baths}</p>
             </div>
@@ -60,10 +65,20 @@ export default function AdListingCard({
                 Member
               </span>
             </div>
+            {isRent && (
+              <div className="flex justify-end mt-4">
+                <button className="bg-blue-500 text-white px-3 py-1 font-semibold">
+                  ভাড়া হয়েছে
+                </button>
+                <button className="bg-red-500 text-white px-3 py-1 font-semibold">
+                  মুছে ফেলুন
+                </button>
+              </div>
+            )}
           </div>
           {/* price */}
-          <div className="text-right font-normal text-lg text-gray-800 absolute top-10 right-0">
-            ৳ {price} /30
+          <div className="text-right font-normal text-lg text-gray-800 absolute top-10 right-4">
+            ৳ {price} {isRent ? "/মাসে" : "/30"}
           </div>
         </div>
       </div>

@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
+import AccountCard from "@/components/About/AccountCard";
 
 export interface User {
   name: string;
@@ -219,31 +220,7 @@ const ProfilePage = () => {
         </Card>
         {/* Sidebar */}
         <div className="w-full md:w-4/12 mb-8 md:mb-0  ">
-          <div className="rounded-md border p-4 mb-6">
-            <h3 className="font-medium mb-3 text-lg">অ্যাকাউন্ট</h3>
-            <ul className="space-y-1 text-md pl-10 font-medium">
-              <li>
-                <a href="#" className="text-blue-500 hover:underline">
-                  আমার বিজ্ঞাপন সমূহ
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-blue-500 hover:underline">
-                  আমার ফেভারিটস
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-blue-500 hover:underline">
-                  আমার প্রোফাইল
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-blue-500 hover:underline">
-                  মেসেজ
-                </a>
-              </li>
-            </ul>
-          </div>
+          <AccountCard />
         </div>
       </div>
     </div>

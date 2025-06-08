@@ -1,12 +1,9 @@
+import AccountCard from "@/components/About/AccountCard";
 import AdListingCard from "@/components/Ads/AdListingCard";
-import { useAuth } from "@/contexts/AuthContext";
 import { Calendar } from "lucide-react";
-import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const MyAdsPage = () => {
-  const { user } = useAuth();
-  const [filter, setFilter] = useState("all");
-
   // Mock data for user's ads
   const myAds = [
     {
@@ -19,6 +16,7 @@ const MyAdsPage = () => {
       postedDate: "2024-01-15",
       views: 45,
       inquiries: 3,
+      isRent: false,
       image:
         "https://ghor.saifmorshed.com/storage/upload/46/pHW64W6RLGcnThifxubJB657uXaqKJKyegLLbZJS.jpg",
     },
@@ -32,6 +30,7 @@ const MyAdsPage = () => {
       postedDate: "2024-01-10",
       views: 32,
       inquiries: 1,
+      isRent: false,
       image:
         "https://ghor.saifmorshed.com/storage/upload/46/pHW64W6RLGcnThifxubJB657uXaqKJKyegLLbZJS.jpg",
     },
@@ -45,6 +44,7 @@ const MyAdsPage = () => {
       postedDate: "2024-01-05",
       views: 67,
       inquiries: 8,
+      isRent: true,
       image:
         "https://ghor.saifmorshed.com/storage/upload/46/pHW64W6RLGcnThifxubJB657uXaqKJKyegLLbZJS.jpg",
     },
@@ -80,51 +80,55 @@ const MyAdsPage = () => {
     }
   };
 
-  const filteredAds =
-    filter === "all" ? myAds : myAds.filter((ad) => ad.status === filter);
-
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
-            <div>
-              <h1 className="text-3xl font-normal mb-2">
-                আমার সকল বিজ্ঞাপন সমূহ
-              </h1>
-            </div>
-          </div>
-
-          {/* Ads Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6">
-            {filteredAds.map((ad) => (
-              <AdListingCard
-                key={ad.id}
-                title={ad.title}
-                location={ad.location}
-                beds={ad.beds ?? 0}
-                baths={ad.baths ?? 0}
-                price={ad.rent}
-                isVerified={false}
-                image={ad.image}
-              />
-            ))}
-          </div>
-
-          {filteredAds.length === 0 && (
-            <div className="text-center py-12">
-              <div className="text-gray-400 mb-4">
-                <Calendar className="h-16 w-16 mx-auto" />
+    <div className="min-h-screen max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className=" flex flex-col md:flex-row gap-4 py-12">
+        {/* Sidebar */}
+        <div className="w-full md:w-4/12 mb-8 md:mb-0  ">
+          <AccountCard />
+        </div>
+        {/* ads list  */}
+        <div className="w-full bg-gray-50 p-4">
+          <div className="max-w-6xl mx-auto">
+            {/* Header */}
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+              <div>
+                <h1 className="text-3xl font-normal">আমার সকল বিজ্ঞাপন সমূহ</h1>
               </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">
-                কোনো বিজ্ঞাপন পাওয়া যায়নি
-              </h3>
-              <p className="text-gray-500 mb-4">
-                এই ক্যাটাগরিতে আপনার কোনো বিজ্ঞাপন নেই।
-              </p>
             </div>
-          )}
+
+            {/* Ads Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6">
+              {myAds?.map((ad) => (
+                <Link key={ad.id} to={`/ads/${ad.id}`}>
+                  <AdListingCard
+                    title={ad.title}
+                    location={ad.location}
+                    beds={ad.beds ?? 0}
+                    baths={ad.baths ?? 0}
+                    price={ad.rent}
+                    isVerified={false}
+                    image={ad.image}
+                    isRent={ad.isRent}
+                  />
+                </Link>
+              ))}
+            </div>
+
+            {myAds.length === 0 && (
+              <div className="text-center py-12">
+                <div className="text-gray-400 mb-4">
+                  <Calendar className="h-16 w-16 mx-auto" />
+                </div>
+                <h3 className="text-lg font-medium text-gray-900 mb-2">
+                  কোনো বিজ্ঞাপন পাওয়া যায়নি
+                </h3>
+                <p className="text-gray-500 mb-4">
+                  এই ক্যাটাগরিতে আপনার কোনো বিজ্ঞাপন নেই।
+                </p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
