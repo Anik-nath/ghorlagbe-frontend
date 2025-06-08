@@ -1,182 +1,192 @@
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardFooter,
+} from "@/components/ui/card";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Separator } from "@/components/ui/separator";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import {
+  Phone,
+  Mail,
+  Lock,
+  User,
+  Heart,
+  Bookmark,
+  Bell,
+  Power,
+  ChevronDown,
+  Menu,
+  X,
+} from "lucide-react";
+import SearchForm from "@/components/Search/SearchForm";
+import Mission from "@/components/About/Misson";
+import { FaShieldHalved } from "react-icons/fa6";
 
-import React, { useState } from 'react';
-import { Upload, Plus } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Textarea } from '@/components/ui/textarea';
+export default function HomePage() {
+  const [districtId, setDistrictId] = useState("");
+  const [upazilaId, setUpazilaId] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState("online");
+  const [packageId, setPackageId] = useState("1");
+  const [txCode, setTxCode] = useState("");
 
-const PostAdPage = () => {
-  const [formData, setFormData] = useState({
-    title: '',
-    description: '',
-    rent: '',
-    location: '',
-    propertyType: '',
-    bedrooms: '',
-    bathrooms: '',
-    images: []
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Post ad form submitted:', formData);
+    // Handle search functionality
+    console.log({ searchTerm, districtId, upazilaId });
+  };
+
+  const handlePaymentSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle payment submission
+    console.log({ packageId, paymentMethod, txCode });
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold mb-4">পোস্ট বিজ্ঞাপন</h1>
-            <p className="text-gray-600">আপনার সম্পত্তির বিজ্ঞাপন দিন এবং ভাড়াটিয়া খুঁজুন</p>
-          </div>
+    <div className="min-h-screen">
+      <div className="my-12 max-w-7xl mx-auto px-8">
+        {/* Search  */}
+        <section className="max-w-7xl mb-6">
+          <SearchForm setSearchType={() => {}} />
+        </section>
+        {/* Post Options */}
+        <section className="py-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="md:col-span-2">
+              <h2 className="text-3xl font-medium mb-8 text-gray-800">
+                বিনামূল্যে বিজ্ঞাপন পোস্ট করুন
+              </h2>
+              <h3 className="text-xl font-medium mb-2 text-gray-800">
+                আপনি কি বিজ্ঞাপন দিতে চান?
+              </h3>
 
-          <form onSubmit={handleSubmit} className="space-y-8">
-            {/* Basic Information */}
-            <Card>
-              <CardHeader>
-                <CardTitle>মৌলিক তথ্য</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium mb-2">বিজ্ঞাপনের শিরোনাম *</label>
-                  <Input
-                    value={formData.title}
-                    onChange={(e) => setFormData({...formData, title: e.target.value})}
-                    placeholder="যেমন: ধানমন্ডিতে ২ বেডরুমের ফ্ল্যাট ভাড়া"
-                    required
-                  />
-                </div>
+              <div className="space-y-4">
+                {/* Landlord Option */}
+                <Card>
+                  <CardContent className="p-4">
+                    <div className="flex items-center">
+                      <div className="mr-4">
+                        <img
+                          src="/public/assets/room.jpg"
+                          alt="Room"
+                          className="w-28 h-28 rounded-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1 text-gray-800">
+                        <h4 className="text-3xl">বাড়িওয়ালা</h4>
+                        <p className="text-lg">আমি বাসা ভাড়া দিতে চাই</p>
+                      </div>
+                      <div>
+                        <a
+                          href="/post-rent"
+                          className="bg-yellow-400 hover:bg-yellow-500 font-medium py-2 px-4 rounded"
+                        >
+                          ফ্রি বিজ্ঞাপন পোস্ট করুন
+                        </a>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
 
-                <div>
-                  <label className="block text-sm font-medium mb-2">বিবরণ *</label>
-                  <Textarea
-                    value={formData.description}
-                    onChange={(e) => setFormData({...formData, description: e.target.value})}
-                    placeholder="আপনার সম্পত্তি সম্পর্কে বিস্তারিত লিখুন..."
-                    rows={4}
-                    required
-                  />
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Property Details */}
-            <Card>
-              <CardHeader>
-                <CardTitle>সম্পত্তির বিবরণ</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium mb-2">সম্পত্তির ধরণ *</label>
-                    <select 
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                      value={formData.propertyType}
-                      onChange={(e) => setFormData({...formData, propertyType: e.target.value})}
-                      required
-                    >
-                      <option value="">নির্বাচন করুন</option>
-                      <option value="apartment">অ্যাপার্টমেন্ট</option>
-                      <option value="house">বাড়ি</option>
-                      <option value="room">রুম</option>
-                      <option value="flat">ফ্ল্যাট</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium mb-2">মাসিক ভাড়া (টাকা) *</label>
-                    <Input
-                      type="number"
-                      value={formData.rent}
-                      onChange={(e) => setFormData({...formData, rent: e.target.value})}
-                      placeholder="০০০০০"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium mb-2">বেডরুম সংখ্যা *</label>
-                    <select 
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                      value={formData.bedrooms}
-                      onChange={(e) => setFormData({...formData, bedrooms: e.target.value})}
-                      required
-                    >
-                      <option value="">নির্বাচন করুন</option>
-                      <option value="1">১</option>
-                      <option value="2">২</option>
-                      <option value="3">৩</option>
-                      <option value="4">৪</option>
-                      <option value="5+">৫+</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium mb-2">বাথরুম সংখ্যা *</label>
-                    <select 
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                      value={formData.bathrooms}
-                      onChange={(e) => setFormData({...formData, bathrooms: e.target.value})}
-                      required
-                    >
-                      <option value="">নির্বাচন করুন</option>
-                      <option value="1">১</option>
-                      <option value="2">২</option>
-                      <option value="3">৩</option>
-                      <option value="4">৪</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium mb-2">ঠিকানা *</label>
-                  <Input
-                    value={formData.location}
-                    onChange={(e) => setFormData({...formData, location: e.target.value})}
-                    placeholder="এলাকা, শহর"
-                    required
-                  />
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Images */}
-            <Card>
-              <CardHeader>
-                <CardTitle>ছবি আপলোড করুন</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
-                  <Upload className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-600 mb-4">ছবি আপলোড করতে ক্লিক করুন বা ড্র্যাগ এন্ড ড্রপ করুন</p>
-                  <Button type="button" variant="outline">
-                    <Plus className="h-4 w-4 mr-2" />
-                    ছবি যোগ করুন
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Submit */}
-            <div className="text-center">
-              <Button 
-                type="submit" 
-                size="lg" 
-                className="bg-green-600 hover:bg-green-700 px-12"
-              >
-                বিজ্ঞাপন পোস্ট করুন
-              </Button>
-              <p className="text-sm text-gray-600 mt-4">
-                বিজ্ঞাপন পোস্ট করার আগে আমাদের <a href="#" className="text-blue-600 hover:underline">নীতিমালা</a> পড়ুন
-              </p>
+                {/* Tenant Option */}
+                <Card>
+                  <CardContent className="p-4">
+                    <div className="flex items-center">
+                      <div className="mr-4">
+                        <img
+                          src="/public/assets/room-wanted.jpg"
+                          alt="Room Wanted"
+                          className="w-28 h-28 rounded-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1 text-gray-800">
+                        <h4 className="text-3xl">ভাড়াটিয়া</h4>
+                        <p className="text-lg">আমি একটি রুম/বাসা খুঁজছি</p>
+                      </div>
+                      <div>
+                        <a
+                          href="/post-rent"
+                          className="bg-yellow-400 hover:bg-yellow-500 font-medium py-2 px-4 rounded"
+                        >
+                          ফ্রি বিজ্ঞাপন পোস্ট করুন
+                        </a>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
-          </form>
-        </div>
+
+            {/* Sidebar */}
+            <div className="md:col-span-1">
+              <div className="mb-14">
+                <h4 className="font-semibold mb-3 text-xl text-gray-800">সাহায্য বিষয়</h4>
+                <div className="space-y-2">
+                  <a href="#" className="block text-blue-500 border-b py-1 text-lg">
+                    ঘর লাগবে কিভাবে কাজ করে?
+                  </a>
+                  <a href="#" className="block text-blue-500 border-b py-1 text-lg">
+                    আমি কিভাবে উপযুক্ত ভাড়া বাড়ি খুঁজে পাব?
+                  </a>
+                  <a href="#" className="block text-blue-500 border-b py-1 text-lg">
+                    কিভাবে ভাড়া রুম খুঁজে পেতে?
+                  </a>
+                </div>
+              </div>
+
+              <Card className="border-red-400">
+                <CardContent className="p-4">
+                  <div className="flex items-center mb-2">
+                    <span className="text-[#157347] mr-2 text-2xl">
+                      <FaShieldHalved />
+                    </span>
+                    <h5 className="font-bold text-xl text-gray-800">সতর্ক বাণী</h5>
+                  </div>
+                  <ul className="list-disc pl-5 space-y-1">
+                    <li>অপরিচিত জায়গায় একা যাবেন না</li>
+                    <li>তৃতীয় পক্ষকে সম্পূর্ণ অর্থ প্রদান করবেন না</li>
+                  </ul>
+                  <a href="#" className="text-blue-500 mt-3 inline-block">
+                    সমস্ত নিরাপত্তা টিপস দেখুন
+                  </a>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
       </div>
+      {/* Mission  */}
+      <Mission />
     </div>
   );
-};
-
-export default PostAdPage;
+}

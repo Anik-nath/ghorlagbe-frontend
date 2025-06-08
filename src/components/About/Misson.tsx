@@ -11,8 +11,11 @@ const Mission = () => {
         ছোট ডিজিটাল এবং গেটি ইচ্ছুক পর্যায় আপলোডেট করুন।
       </p>
       <div className="text-center">
-        <Button className="hover:bg-[#157347] bg-[#198754] mb-4 text-lg font-medium">
-          ফ্রি বিজ্ঞাপন পোস্ট করুন
+        <Button
+          asChild
+          className="hover:bg-[#157347] bg-[#198754] mb-4 text-lg font-medium"
+        >
+          <a href="/post-ad">ফ্রি বিজ্ঞাপন পোস্ট করুন</a>
         </Button>
         <p className="text-gray-600 text-lg">
           রুম প্রয়োজন??{" "}
