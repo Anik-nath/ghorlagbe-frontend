@@ -91,17 +91,17 @@ const AdsDetails = () => {
         </div>
       </div>
       {/* details and message*/}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 my-12">
         <div className="col-span-2">
           {/* price */}
-          <div className="flex justify-between items-center gap-4 mt-8">
+          <div className="flex justify-between items-center gap-4">
             <div className="flex items-center text-lg font-semibold text-[#157347]">
               <span className="text-2xl">৳ 3000</span>
               <span>/</span>
               <span>30</span>
             </div>
             <div className="text-lg text-gray-700">
-              Example: <span className="font-semibold">আছে</span>
+              অভায়লাবিলিটি: <span className="font-semibold">আছে</span>
             </div>
           </div>
           {/* detils */}
@@ -240,10 +240,13 @@ const AdsDetails = () => {
           {/* warning */}
           <div className="mt-6">
             <div className="bg-white border border-red-400 text-red-700 px-4 py-3 rounded-lg shadow">
-              <strong className="font-bold block mb-1">সতর্কতা!</strong>
-              <ul className="list-disc list-inside text-sm mb-2 text-black">
-                <li>কখনো অগ্রিম টাকা পাঠাবেন না।</li>
-                <li>বিজ্ঞাপন যাচাই করে নিন এবং সরাসরি দেখা করে লেনদেন করুন।</li>
+              <strong className="font-bold flex items-center gap-2 mb-1 text-black">
+                <FaShieldHeart className="text-red-500 w-5 h-5" />
+                সতর্কতা বাণী!
+              </strong>
+              <ul className="list-disc list-inside text-md m-2 text-black">
+                <li>অপরিচিত জায়গায় একা যাবেন না।</li>
+                <li>তৃতীয় পক্ষকে সম্পূর্ণ অর্থ প্রদান করবেন না।</li>
               </ul>
               <a
                 href="#"
