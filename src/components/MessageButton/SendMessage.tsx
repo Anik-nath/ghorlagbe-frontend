@@ -107,16 +107,10 @@ const SendMessage = () => {
         </DialogHeader>
 
         {!isAuthenticated ? (
-          <div className="flex flex-col items-center gap-4 py-4">
+          <div className="flex flex-col items-center gap-4 py-4 border border-gray-300 rounded-lg bg-green-100">
             <p className="text-lg">মেসেজ পাঠাতে লগইন করুন</p>
-            <Button
-              className="bg-[#157347] hover:bg-green-700"
-              onClick={() => {
-                // router.push("/login");
-                alert("Redirect to login page");
-              }}
-            >
-              লগইন করুন
+            <Button asChild className="bg-[#157347] hover:bg-green-700">
+              <a href="/login">লগইন করুন</a>
             </Button>
           </div>
         ) : (
