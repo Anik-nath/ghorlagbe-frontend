@@ -10,6 +10,7 @@ import {
 import { MdEmail } from "react-icons/md";
 import { FaShieldHeart, FaXTwitter } from "react-icons/fa6";
 import { AiFillWechat } from "react-icons/ai";
+import SendMessage from "@/components/MessageButton/SendMessage";
 
 const AdsDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -243,13 +244,7 @@ const AdsDetails = () => {
               </div>
             </div>
             {/* contact info */}
-            <button
-              className="w-full bg-[#157347] hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition flex items-center justify-center gap-2"
-              type="button"
-            >
-              <AiFillWechat size={24} className="text-white" />
-              একটি মেসেজ পাঠান
-            </button>
+            <SendMessage />
             <button
               className="w-full bg-[#157347] hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition flex items-center justify-center gap-2"
               type="button"
