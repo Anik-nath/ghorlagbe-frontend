@@ -21,7 +21,7 @@ const AdsDetails = () => {
       <Breadcrumbs />
       {/* Ads title and share buttons */}
       <div className="flex md:flex-row flex-col md:items-center md:justify-between mb-4">
-        <div>
+        <div className="pt-6">
           <h1 className="text-2xl font-bold">Ads Title</h1>
           <div className="flex items-center gap-2 mb-4 text-gray-600 text-md">
             <span>১২:০০ PM</span>
