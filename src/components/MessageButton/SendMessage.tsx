@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { AiFillWechat } from "react-icons/ai";
 import { Button } from "@/components/ui/button";
 import {
@@ -20,9 +20,51 @@ interface Message {
 }
 
 const SendMessage = () => {
+  const sampleMessages: Message[] = [
+    {
+      id: "1",
+      text: "হ্যালো, কেমন আছেন?",
+      sender: "user",
+      timestamp: new Date(Date.now() - 3600000), // 1 hour ago
+    },
+    {
+      id: "2",
+      text: "আমি ভালো আছি, ধন্যবাদ! আপনি কেমন আছেন?",
+      sender: "recipient",
+      timestamp: new Date(Date.now() - 3000000), // 50 minutes ago
+    },
+    {
+      id: "3",
+      text: "আমিও ভালো আছি। আপনার সেবা সম্পর্কে কিছু জানতে চাই।",
+      sender: "user",
+      timestamp: new Date(Date.now() - 2400000), // 40 minutes ago
+    },
+    {
+      id: "4",
+      text: "অবশ্যই, আমি কিভাবে আপনাকে সাহায্য করতে পারি?",
+      sender: "recipient",
+      timestamp: new Date(Date.now() - 1800000), // 30 minutes ago
+    },
+    {
+      id: "5",
+      text: "আপনার প্রতিষ্ঠানের সার্ভিস চার্জ সম্পর্কে জানতে চাই।",
+      sender: "user",
+      timestamp: new Date(Date.now() - 600000), // 10 minutes ago
+    },
+  ];
   const { user, isAuthenticated } = useAuth();
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>(sampleMessages);
   const [newMessage, setNewMessage] = useState("");
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Auto-scroll to bottom when messages change
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,17 +80,6 @@ const SendMessage = () => {
 
     setMessages((prev) => [...prev, userMessage]);
     setNewMessage("");
-
-    // Simulate response after 1 second
-    setTimeout(() => {
-      const responseMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        text: "ধন্যবাদ আপনার মেসেজের জন্য। আমরা শীঘ্রই উত্তর দেব।",
-        sender: "recipient",
-        timestamp: new Date(),
-      };
-      setMessages((prev) => [...prev, responseMessage]);
-    }, 1000);
   };
 
   return (
@@ -80,7 +111,6 @@ const SendMessage = () => {
             <p className="text-lg">মেসেজ পাঠাতে লগইন করুন</p>
             <Button
               className="bg-[#157347] hover:bg-green-700"
-              // Replace with your actual login navigation
               onClick={() => {
                 // router.push("/login");
                 alert("Redirect to login page");
@@ -91,7 +121,7 @@ const SendMessage = () => {
           </div>
         ) : (
           <div className="space-y-4">
-            <div className="border rounded-lg p-4 h-64 overflow-y-auto bg-green-50">
+            <div className="border border-gray-300 rounded-lg p-4 h-72 overflow-y-auto bg-green-100">
               {messages.length === 0 ? (
                 <div className="flex items-center justify-center h-full text-gray-500">
                   কোনো মেসেজ নেই
@@ -124,24 +154,30 @@ const SendMessage = () => {
                       </div>
                     </div>
                   ))}
+                  <div ref={messagesEndRef} />
                 </div>
               )}
             </div>
 
-            <form onSubmit={handleSendMessage} className="flex gap-2">
-              <Input
+            <form
+              onSubmit={handleSendMessage}
+              className="flex items-center gap-2 bg-white rounded-full shadow-sm border border-gray-300 px-4 py-3 transition-all"
+            >
+              <input
                 value={newMessage}
                 onChange={(e) => setNewMessage(e.target.value)}
                 placeholder="আপনার মেসেজ লিখুন..."
-                className="flex-1"
+                className="flex-1 border-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 text-gray-800 placeholder-gray-600"
+                aria-label="Message input"
               />
               <Button
                 type="submit"
-                className="bg-[#157347] hover:bg-green-700"
                 disabled={!newMessage.trim()}
+                aria-label="Send message"
+                className="p-2 px-3 rounded-full hover:bg-[#157347] text-white bg-[#198754] disabled:bg-gray-300 disabled:text-gray-900 disabled:cursor-not-allowed transition-colors shadow-sm hover:shadow-md active:scale-95 disabled:scale-100"
               >
-                <Send className="w-4 h-4" />
-                পাঠান
+                <Send className="w-6 h-6" />
+                <span className="sr-only">Send</span>
               </Button>
             </form>
           </div>
