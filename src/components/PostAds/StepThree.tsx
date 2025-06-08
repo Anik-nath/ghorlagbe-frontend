@@ -41,8 +41,11 @@ const StepThree = ({
         <Button type="button" variant="outline" onClick={handlePrevStep}>
           পূর্ববর্তী ধাপ
         </Button>
-        <Button type="submit" className="bg-green-600 hover:bg-green-700 px-6">
-          পোস্টটি সাবমিট করুন
+        <Button
+          type="submit"
+          className="bg-[#198754] hover:bg-[#157347] px-8 text-lg"
+        >
+          সাবমিট করুন
         </Button>
       </div>
     </div>

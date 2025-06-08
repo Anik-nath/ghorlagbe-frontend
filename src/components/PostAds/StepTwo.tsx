@@ -451,7 +451,7 @@ const StepTwo = ({
         <Button
           type="button"
           onClick={handleNextStep}
-          className="bg-green-600 hover:bg-green-700 px-6"
+          className="bg-[#198754] hover:bg-[#157347] px-8 text-lg"
         >
           পরের ধাপ
         </Button>

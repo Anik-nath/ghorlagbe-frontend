@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { FaCheck } from "react-icons/fa6";
 
 const StepOne = ({
   formData,
@@ -48,38 +49,26 @@ const StepOne = ({
               />
               <label
                 htmlFor={item.id}
-                className={`block p-4 border rounded-lg cursor-pointer transition-all ${
-                  formData.rent_for === item.value
-                    ? "border-green-500 bg-green-50"
-                    : "border-gray-200 hover:border-gray-300"
-                }`}
+                className={`block p-4 border rounded-lg cursor-pointer transition-all relative overflow-hidden border-gray-200 hover:border-gray-300`}
+                style={{ minWidth: 110 }}
               >
                 <img
                   src={item.icon}
                   alt={item.label}
-                  className="w-12 h-12 mx-auto mb-2"
+                  className={`w-12 h-12 mx-auto mb-2 transition-all duration-200 ${
+                    formData.rent_for === item.value
+                      ? ""
+                      : "grayscale hover:grayscale-0"
+                  }`}
                 />
                 <div>{item.label}</div>
-                <div
-                  className={`absolute -top-2 -right-2 w-6 h-6 rounded-full bg-red-500 flex items-center justify-center ${
-                    formData.rent_for === item.value
-                      ? "opacity-100"
-                      : "opacity-0"
-                  }`}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 text-white"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </div>
+                {formData.rent_for === item.value && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-white/70 z-10 rounded-lg">
+                    <span className="flex items-center justify-center w-8 h-8 rounded-full bg-red-500">
+                      <FaCheck className="text-white w-4 h-4" />
+                    </span>
+                  </div>
+                )}
               </label>
             </div>
           ))}
@@ -104,38 +93,25 @@ const StepOne = ({
               />
               <label
                 htmlFor={item.id}
-                className={`block p-4 border rounded-lg cursor-pointer transition-all ${
-                  formData.rent_to.includes(item.value)
-                    ? "border-green-500 bg-green-50"
-                    : "border-gray-200 hover:border-gray-300"
-                }`}
+                className={`block p-4 border rounded-lg cursor-pointer transition-all border-gray-200 hover:border-gray-300 relative overflow-hidden`}
               >
                 <img
                   src={item.icon}
                   alt={item.label}
-                  className="w-12 h-12 mx-auto mb-2"
+                  className={`w-12 h-12 mx-auto mb-2 transition-all duration-200 ${
+                    formData.rent_to.includes(item.value)
+                      ? ""
+                      : "grayscale hover:grayscale-0"
+                  }`}
                 />
                 <div>{item.label}</div>
-                <div
-                  className={`absolute -top-2 -right-2 w-6 h-6 rounded-full bg-red-500 flex items-center justify-center ${
-                    formData.rent_to.includes(item.value)
-                      ? "opacity-100"
-                      : "opacity-0"
-                  }`}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 text-white"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </div>
+                {formData.rent_to.includes(item.value) && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-white/70 z-10 rounded-lg">
+                    <span className="flex items-center justify-center w-8 h-8 rounded-full bg-red-500">
+                      <FaCheck className="text-white w-5 h-5" />
+                    </span>
+                  </div>
+                )}
               </label>
             </div>
           ))}
@@ -192,38 +168,25 @@ const StepOne = ({
               />
               <label
                 htmlFor={item.id}
-                className={`block p-4 border rounded-lg cursor-pointer transition-all ${
-                  formData.religion_for.includes(item.value)
-                    ? "border-green-500 bg-green-50"
-                    : "border-gray-200 hover:border-gray-300"
-                }`}
+                className={`block p-4 border rounded-lg cursor-pointer transition-all border-gray-200 hover:border-gray-300 relative overflow-hidden`}
               >
                 <img
                   src={item.icon}
                   alt={item.label}
-                  className="w-12 h-12 mx-auto mb-2"
+                  className={`w-12 h-12 mx-auto mb-2 transition-all duration-200 ${
+                    formData.religion_for.includes(item.value)
+                      ? ""
+                      : "grayscale hover:grayscale-0"
+                  }`}
                 />
                 <div>{item.label}</div>
-                <div
-                  className={`absolute -top-2 -right-2 w-6 h-6 rounded-full bg-red-500 flex items-center justify-center ${
-                    formData.religion_for.includes(item.value)
-                      ? "opacity-100"
-                      : "opacity-0"
-                  }`}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 text-white"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </div>
+                {formData.religion_for.includes(item.value) && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-white/70 z-10 rounded-lg">
+                    <span className="flex items-center justify-center w-8 h-8 rounded-full bg-red-500">
+                      <FaCheck className="text-white w-4 h-4" />
+                    </span>
+                  </div>
+                )}
               </label>
             </div>
           ))}
@@ -234,7 +197,7 @@ const StepOne = ({
         <Button
           type="button"
           onClick={handleNextStep}
-          className="bg-green-600 hover:bg-green-700 px-6"
+          className="bg-[#198754] hover:bg-[#157347] px-8 text-lg"
           disabled={!formData.rent_for || formData.rent_to.length === 0}
         >
           পরের ধাপ

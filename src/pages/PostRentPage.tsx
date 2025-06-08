@@ -1,7 +1,7 @@
 import StepOne from "@/components/PostAds/StepOne";
 import StepThree from "@/components/PostAds/StepThree";
 import StepTwo from "@/components/PostAds/StepTwo";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { useState } from "react";
 
 const PostRentPage = () => {
@@ -210,107 +210,101 @@ const PostRentPage = () => {
         },
       ];
     }
-    return baseOptions; // Return base options when nothing is selected
+    return baseOptions;
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen max-w-5xl mx-auto">
       <section className="py-8">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-center">
-            <div className="w-full max-w-4xl">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-2xl font-bold text-gray-800">
-                    আপনার বিনামূল্যে বিজ্ঞাপন দিয়ে শুরু করুন
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    {/* Progress bar */}
-                    <div className="relative">
-                      {/* Progress bar line */}
-                      <div className="h-1 bg-gray-200 rounded-full relative">
-                        <div
-                          className="h-1 bg-green-600 rounded-full absolute left-0 top-0"
-                          style={{ width: `${(currentStep / 3) * 100}%` }}
-                        ></div>
-                        {/* Step circles */}
-                        <div className="absolute left-0 top-1/2 w-full flex justify-between -translate-y-1/2 pointer-events-none">
-                          {[1, 2, 3].map((step) => (
-                            <span
-                              key={step}
-                              className={`w-8 h-8 rounded-full flex items-center justify-center border-2 transition-colors
+        <div className="text-3xl font-medium text-gray-800 pb-8">
+          আপনার বিনামূল্যে বিজ্ঞাপন দিয়ে শুরু করুন
+        </div>
+        <div className="w-full">
+          <Card className="py-14">
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Progress bar */}
+                <div className="relative">
+                  {/* Progress bar line */}
+                  <div className="h-1 bg-gray-200 rounded-full relative">
+                    <div
+                      className="h-1 bg-green-600 rounded-full absolute left-0 top-0"
+                      style={{ width: `${(currentStep / 3) * 100}%` }}
+                    ></div>
+                    {/* Step circles */}
+                    <div className="absolute left-0 top-1/2 w-full flex justify-between -translate-y-1/2 pointer-events-none">
+                      {[1, 2, 3].map((step) => (
+                        <span
+                          key={step}
+                          className={`w-8 h-8 rounded-full flex items-center justify-center border-2 transition-colors
                                 ${
                                   currentStep >= step
                                     ? "bg-green-600 border-green-600 text-white"
                                     : "bg-white border-gray-300 text-gray-600"
                                 }`}
-                              style={{ zIndex: 1 }}
-                            >
-                              {step}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                      {/* Clickable step buttons below the line */}
-                      <div className="flex justify-between mt-6">
-                        {[1, 2, 3].map((step) => (
-                          <button
-                            key={step}
-                            type="button"
-                            onClick={() => setCurrentStep(step)}
-                            className="w-8 h-8 opacity-0"
-                            tabIndex={-1}
-                            aria-hidden="true"
-                          >
-                            {step}
-                          </button>
-                        ))}
-                      </div>
+                          style={{ zIndex: 1 }}
+                        >
+                          {step}
+                        </span>
+                      ))}
                     </div>
+                  </div>
+                  {/* Clickable step buttons below the line */}
+                  <div className="flex justify-between mt-6">
+                    {[1, 2, 3].map((step) => (
+                      <button
+                        key={step}
+                        type="button"
+                        onClick={() => setCurrentStep(step)}
+                        className="w-8 h-8 opacity-0"
+                        tabIndex={-1}
+                        aria-hidden="true"
+                      >
+                        {step}
+                      </button>
+                    ))}
+                  </div>
+                </div>
 
-                    {/* Step 1 */}
-                    {currentStep === 1 && (
-                      <StepOne
-                        formData={formData}
-                        handleInputChange={handleInputChange}
-                        handleRadioChange={handleRadioChange}
-                        handleCheckboxChange={handleCheckboxChange}
-                        handleNextStep={handleNextStep}
-                        getRentToOptions={getRentToOptions}
-                      />
-                    )}
+                {/* Step 1 */}
+                {currentStep === 1 && (
+                  <StepOne
+                    formData={formData}
+                    handleInputChange={handleInputChange}
+                    handleRadioChange={handleRadioChange}
+                    handleCheckboxChange={handleCheckboxChange}
+                    handleNextStep={handleNextStep}
+                    getRentToOptions={getRentToOptions}
+                  />
+                )}
 
-                    {/* Step 2 */}
-                    {currentStep === 2 && (
-                      <StepTwo
-                        formData={formData}
-                        setFormData={setFormData}
-                        handleInputChange={handleInputChange}
-                        handleCheckboxChange={handleCheckboxChange}
-                        handleRadioChange={handleRadioChange}
-                        handleFileChange={handleFileChange}
-                        getRentToOptions={getRentToOptions}
-                        handlePrevStep={handlePrevStep}
-                        handleNextStep={handleNextStep}
-                      />
-                    )}
+                {/* Step 2 */}
+                {currentStep === 2 && (
+                  <StepTwo
+                    formData={formData}
+                    setFormData={setFormData}
+                    handleInputChange={handleInputChange}
+                    handleCheckboxChange={handleCheckboxChange}
+                    handleRadioChange={handleRadioChange}
+                    handleFileChange={handleFileChange}
+                    getRentToOptions={getRentToOptions}
+                    handlePrevStep={handlePrevStep}
+                    handleNextStep={handleNextStep}
+                  />
+                )}
 
-                    {/* Step 3 */}
-                    {currentStep === 3 && (
-                      <StepThree
-                        formData={formData}
-                        handleInputChange={handleInputChange}
-                        handleFileChange={handleFileChange}
-                        handlePrevStep={handlePrevStep}
-                      />
-                    )}
-                  </form>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
+                {/* Step 3 */}
+                {currentStep === 3 && (
+                  <StepThree
+                    formData={formData}
+                    handleInputChange={handleInputChange}
+                    handleFileChange={handleFileChange}
+                    handlePrevStep={handlePrevStep}
+                  />
+                )}
+              </form>
+            </CardContent>
+          </Card>
         </div>
       </section>
     </div>
