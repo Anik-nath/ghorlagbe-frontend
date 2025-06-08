@@ -97,118 +97,120 @@ const PostRentPage = () => {
     // Add your form submission logic here
   };
 
-  // Define rent options based on rent_for selection
   const getRentToOptions = () => {
+    // Initially show these two options
+    const baseOptions = [
+      {
+        id: "rent-bachelor",
+        value: "bachelor",
+        label: "ব্যাচেলর",
+        icon: "/public/assets/icons/bachelor.png",
+      },
+      {
+        id: "rent-full-family",
+        value: "full-family",
+        label: "ফ্যামিলি",
+        icon: "/public/assets/icons/family.png",
+      },
+    ];
+
     if (formData.rent_for === "0") {
-      // ফ্লাট ভাড়া
-      return [
-        {
-          id: "rent-bachelor",
-          value: "bachelor",
-          label: "ব্যাচেলর",
-          icon: "/images/icons/bachelor.png",
-        },
-        {
-          id: "rent-full-family",
-          value: "full-family",
-          label: "ফ্যামিলি",
-          icon: "/images/icons/f-family.png",
-        },
-      ];
+      // ফ্লাট ভাড়া - keep just the two options
+      return baseOptions;
     } else if (formData.rent_for === "1") {
-      // সিট ভাড়া
+      // সিট ভাড়া - add additional options
       return [
         {
           id: "rent-male-student",
           value: "male-student",
           label: "ছাত্র",
-          icon: "/images/icons/male_student.png",
+          icon: "/public/assets/icons/male_student.png",
         },
         {
           id: "rent-female-student",
           value: "female-student",
           label: "ছাত্রী",
-          icon: "/images/icons/female_student.png",
+          icon: "/public/assets/icons/female_student.png",
         },
         {
           id: "rent-men",
           value: "men",
           label: "পুরুষ",
-          icon: "/images/icons/man.png",
+          icon: "/public/assets/icons/man.png",
         },
         {
           id: "rent-women",
           value: "women",
           label: "মহিলা",
-          icon: "/images/icons/woman.png",
+          icon: "/public/assets/icons/woman.png",
         },
         {
           id: "rent-male-jobholder",
           value: "male-jobholder",
           label: "পুরুষ চাকরীজীবী",
-          icon: "/images/icons/businessman.png",
+          icon: "/public/assets/icons/businessman.png",
         },
         {
           id: "rent-female-jobholder",
           value: "female-jobholder",
           label: "মহিলা চাকরীজীবী",
-          icon: "/images/icons/employee.png",
+          icon: "/public/assets/icons/employee.png",
         },
         {
           id: "rent-all-other",
           value: "all-other",
           label: "যেকোনো",
-          icon: "/images/icons/anyone.png",
+          icon: "/public/assets/icons/anyone.png",
         },
       ];
     } else if (formData.rent_for === "2") {
-      // সাবলেট
+      // সাবলেট - add additional options
       return [
         {
           id: "rent-male-student",
           value: "male-student",
           label: "ছাত্র",
-          icon: "/images/icons/male_student.png",
+          icon: "/public/assets/icons/male_student.png",
         },
         {
           id: "rent-female-student",
           value: "female-student",
           label: "ছাত্রী",
-          icon: "/images/icons/female_student.png",
+          icon: "/public/assets/icons/female_student.png",
         },
         {
           id: "rent-men",
           value: "men",
           label: "পুরুষ",
-          icon: "/images/icons/man.png",
+          icon: "/public/assets/icons/man.png",
         },
         {
           id: "rent-women",
           value: "women",
           label: "মহিলা",
-          icon: "/images/icons/woman.png",
+          icon: "/public/assets/icons/woman.png",
         },
         {
           id: "rent-male-jobholder",
           value: "male-jobholder",
           label: "পুরুষ চাকরীজীবী",
-          icon: "/images/icons/businessman.png",
+          icon: "/public/assets/icons/businessman.png",
         },
         {
           id: "rent-female-jobholder",
           value: "female-jobholder",
           label: "মহিলা চাকরীজীবী",
-          icon: "/images/icons/employee.png",
+          icon: "/public/assets/icons/employee.png",
         },
         {
           id: "rent-small-family",
           value: "small-family",
           label: "ছোট ফ্যামিলি",
-          icon: "/images/icons/family.png",
+          icon: "/public/assets/icons/f-family.png",
         },
       ];
     }
-    return [];
+    return baseOptions; // Return base options when nothing is selected
   };
 
   return (
