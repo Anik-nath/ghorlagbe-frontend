@@ -6,7 +6,14 @@ import { useState } from "react";
 
 const PostRentPage = () => {
   const [currentStep, setCurrentStep] = useState(1);
+
   const [formData, setFormData] = useState({
+    lift: "",
+    generator: "",
+    parking: "",
+    wifi: "",
+    gas: "",
+    security: "",
     rent_for: "",
     rent_to: [],
     religion_for: [],
@@ -21,12 +28,6 @@ const PostRentPage = () => {
     bathrooms: "",
     balconies: "",
     floor: "",
-    lift: "no",
-    generator: "no",
-    security: "no",
-    parking: "no",
-    gas: "no",
-    wifi: "no",
     rent_amount: "",
     rent_type: "month",
     rent_negotiable: false,
@@ -39,6 +40,17 @@ const PostRentPage = () => {
     description: "",
     images: [],
   });
+  const setLift = (lift: string) => setFormData((prev) => ({ ...prev, lift }));
+  const setGenerator = (generator: string) =>
+    setFormData((prev) => ({ ...prev, generator }));
+  const setParking = (parking: string) =>
+    setFormData((prev) => ({ ...prev, parking }));
+  const setWifi = (wifi: string) => setFormData((prev) => ({ ...prev, wifi }));
+  const setGas = (gas: string) => setFormData((prev) => ({ ...prev, gas }));
+  const setSecurity = (security: string) =>
+    setFormData((prev) => ({ ...prev, security }));
+
+  const { lift, generator, parking, wifi, gas, security } = formData;
 
   const handleNextStep = () => {
     setCurrentStep((prev) => Math.min(prev + 1, 3));
@@ -290,6 +302,12 @@ const PostRentPage = () => {
                     getRentToOptions={getRentToOptions}
                     handlePrevStep={handlePrevStep}
                     handleNextStep={handleNextStep}
+                    setLift={setLift}
+                    setGenerator={setGenerator}
+                    setParking={setParking}
+                    setWifi={setWifi}
+                    setGas={setGas}
+                    setSecurity={setSecurity}
                   />
                 )}
 
