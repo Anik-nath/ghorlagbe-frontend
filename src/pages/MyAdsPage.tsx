@@ -8,8 +8,8 @@ const MyAdsPage = () => {
   const myAds = [
     {
       id: 1,
-      title: "ধানমন্ডিতে ২ বেডরুমের সুন্দর ফ্ল্যাট",
-      location: "ধানমন্ডি, ঢাকা",
+      title: "গ্যাস ও বিদ্যুৎ সুবিধা সহ ব্যাচেলর ঘর ভাড়া দেওয়া হবে",
+      location: "Fotika, hathazari, চট্টগ্রাম, চট্টগ্রাম",
       rent: 25000,
       type: "ফ্ল্যাট",
       status: "active",
@@ -81,19 +81,19 @@ const MyAdsPage = () => {
   };
 
   return (
-    <div className="min-h-screen max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen max-w-6xl mx-auto px-4 sm:px-6 lg:px-4">
       <div className=" flex flex-col md:flex-row gap-4 py-12">
         {/* Sidebar */}
-        <div className="w-full md:w-4/12 mb-8 md:mb-0  ">
+        <div className="w-full md:w-4/12">
           <AccountCard />
         </div>
         {/* ads list  */}
         <div className="w-full bg-gray-50 p-4">
           <div className="max-w-6xl mx-auto">
             {/* Header */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center md:mb-8 mb-4">
               <div>
-                <h1 className="text-3xl font-normal">আমার সকল বিজ্ঞাপন সমূহ</h1>
+                <h1 className="md:text-2xl text-xl font-normal">আমার সকল বিজ্ঞাপন সমূহ</h1>
               </div>
             </div>
 

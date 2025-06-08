@@ -74,9 +74,9 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen">
-      <div className="my-12 max-w-7xl mx-auto px-8">
+      <div className="my-12 max-w-6xl mx-auto px-8">
         {/* Search  */}
-        <section className="max-w-7xl mb-6">
+        <section className="max-w-6xl mb-6">
           <SearchForm setSearchType={() => {}} />
         </section>
         {/* Post Options */}
@@ -150,15 +150,26 @@ export default function HomePage() {
             {/* Sidebar */}
             <div className="md:col-span-1">
               <div className="mb-14">
-                <h4 className="font-semibold mb-3 text-xl text-gray-800">সাহায্য বিষয়</h4>
+                <h4 className="font-semibold mb-3 text-xl text-gray-800">
+                  সাহায্য বিষয়
+                </h4>
                 <div className="space-y-2">
-                  <a href="#" className="block text-blue-500 border-b py-1 text-lg">
+                  <a
+                    href="#"
+                    className="block text-blue-500 border-b py-1 text-lg"
+                  >
                     ঘর লাগবে কিভাবে কাজ করে?
                   </a>
-                  <a href="#" className="block text-blue-500 border-b py-1 text-lg">
+                  <a
+                    href="#"
+                    className="block text-blue-500 border-b py-1 text-lg"
+                  >
                     আমি কিভাবে উপযুক্ত ভাড়া বাড়ি খুঁজে পাব?
                   </a>
-                  <a href="#" className="block text-blue-500 border-b py-1 text-lg">
+                  <a
+                    href="#"
+                    className="block text-blue-500 border-b py-1 text-lg"
+                  >
                     কিভাবে ভাড়া রুম খুঁজে পেতে?
                   </a>
                 </div>
@@ -170,7 +181,9 @@ export default function HomePage() {
                     <span className="text-[#157347] mr-2 text-2xl">
                       <FaShieldHalved />
                     </span>
-                    <h5 className="font-bold text-xl text-gray-800">সতর্ক বাণী</h5>
+                    <h5 className="font-bold text-xl text-gray-800">
+                      সতর্ক বাণী
+                    </h5>
                   </div>
                   <ul className="list-disc pl-5 space-y-1">
                     <li>অপরিচিত জায়গায় একা যাবেন না</li>

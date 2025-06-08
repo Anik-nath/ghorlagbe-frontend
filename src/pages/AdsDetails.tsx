@@ -16,7 +16,7 @@ const AdsDetails = () => {
   const { id } = useParams<{ id: string }>();
 
   return (
-    <div className="max-w-7xl mx-auto md:px-8 px-6 py-8 min-h-screen">
+    <div className="max-w-6xl mx-auto md:px-4 px-6 py-8 min-h-screen">
       {/* Breadcrumb */}
       <Breadcrumbs />
       {/* Ads title and share buttons */}
@@ -227,7 +227,7 @@ const AdsDetails = () => {
               />
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="text-lg font-semibold">
+                  <span className="text-md font-semibold">
                     মোঃ রাকিবুল হাসান
                   </span>
                   <span

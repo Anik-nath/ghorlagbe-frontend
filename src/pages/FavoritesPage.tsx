@@ -51,10 +51,10 @@ const FavoritesPage = () => {
   ];
 
   return (
-    <div className="min-h-screen max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className=" flex flex-col md:flex-row gap-4 py-12">
         {/* Sidebar */}
-        <div className="w-full md:w-4/12 mb-8 md:mb-0  ">
+        <div className="w-full md:w-4/12 ">
           <AccountCard />
         </div>
         {/* wishlist items */}
@@ -63,7 +63,7 @@ const FavoritesPage = () => {
             {/* Header */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
               <div>
-                <h1 className="text-3xl font-normal">
+                <h1 className="md:text-2xl text-xl font-normal">
                   আমার ফেবারিটস বিজ্ঞাপন সমূহ
                 </h1>
               </div>

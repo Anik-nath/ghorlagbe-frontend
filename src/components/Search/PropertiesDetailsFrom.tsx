@@ -15,12 +15,12 @@ const PropertiesDetailsFrom = ({
   security,
 }) => {
   return (
-    <div className="max-w-6xl mx-auto bg-white rounded-lg p-10 border">
+    <div className="max-w-6xl mx-auto bg-white rounded-lg md:p-10 p-4 border">
       <form>
         <div className="space-y-5">
           {/* প্রপার্টির ধরন */}
           <div className="flex items-start gap-4">
-            <label className="w-4/12 text-left text-lg">প্রপার্টির ধরন:</label>
+            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">প্রপার্টির ধরন:</label>
             <select className="w-full px-4 py-2 border border-gray-300 rounded-md">
               <option value="">-------</option>
               <option value="0">ফ্লাট ভাড়া</option>
@@ -31,7 +31,7 @@ const PropertiesDetailsFrom = ({
 
           {/* ভাড়ার ধরন */}
           <div className="flex items-start gap-4">
-            <label className="w-4/12 text-left text-lg">ভাড়ার ধরন:</label>
+            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">ভাড়ার ধরন:</label>
             <div className="w-full flex flex-wrap gap-x-6 gap-y-2">
               {[
                 { label: "ব্যাচেলর", value: "bachelor" },
@@ -59,7 +59,7 @@ const PropertiesDetailsFrom = ({
 
           {/* অবস্থান */}
           <div className="flex items-start gap-4">
-            <label className="w-4/12 text-left text-lg">অবস্থান:</label>
+            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">অবস্থান:</label>
             <div className="w-full grid grid-cols-2 gap-2">
               <select className="px-4 py-2 border border-gray-300 rounded-md">
                 <option value="">শহর</option>
@@ -78,7 +78,7 @@ const PropertiesDetailsFrom = ({
 
           {/* বেড রুম */}
           <div className="flex items-start gap-4">
-            <label className="w-4/12 text-left text-lg">বেড রুম:</label>
+            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">বেড রুম:</label>
             <select className="w-full px-4 py-2 border border-gray-300 rounded-md">
               <option value="">-------</option>
               <option value="1">১</option>
@@ -92,7 +92,7 @@ const PropertiesDetailsFrom = ({
 
           {/* ওয়াস রুম */}
           <div className="flex items-start gap-4">
-            <label className="w-4/12 text-left text-lg">ওয়াস রুম:</label>
+            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">ওয়াস রুম:</label>
             <select className="w-full px-4 py-2 border border-gray-300 rounded-md">
               <option value="">-------</option>
               <option value="1">১</option>
@@ -105,7 +105,7 @@ const PropertiesDetailsFrom = ({
           </div>
           {/* লিফট সুবিধা */}
           <div className="flex items-start gap-4 mb-4">
-            <label className="w-4/12 text-left text-lg">লিফট সুবিধা:</label>
+            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">লিফট সুবিধা:</label>
             <div className="w-full flex">
               <div className="flex items-center rounded-full overflow-hidden">
                 {/* আছে Button */}
@@ -142,7 +142,7 @@ const PropertiesDetailsFrom = ({
 
           {/* জেনেরেটর সুবিধা */}
           <div className="flex items-start gap-4">
-            <label className="w-4/12 text-left text-lg">জেনেরেটর সুবিধা:</label>
+            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">জেনেরেটর সুবিধা:</label>
             <div className="w-full flex">
               <div className="flex items-center rounded-full overflow-hidden">
                 <button
@@ -180,7 +180,7 @@ const PropertiesDetailsFrom = ({
 
           {/* সিকিউরিটি গার্ড */}
           <div className="flex items-start gap-4">
-            <label className="w-4/12 text-left text-lg">সিকিউরিটি গার্ড:</label>
+            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">সিকিউরিটি গার্ড:</label>
             <div className="w-full flex">
               <div className="flex items-center rounded-full overflow-hidden">
                 <button
@@ -218,7 +218,7 @@ const PropertiesDetailsFrom = ({
 
           {/* পার্কিং সুবিধা */}
           <div className="flex items-start gap-4">
-            <label className="w-4/12 text-left text-lg">পার্কিং সুবিধা:</label>
+            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">পার্কিং সুবিধা:</label>
             <div className="w-full flex">
               <div className="flex items-center rounded-full overflow-hidden">
                 <button
@@ -256,7 +256,7 @@ const PropertiesDetailsFrom = ({
 
           {/* গ্যাস সুবিধা */}
           <div className="flex items-start gap-4">
-            <label className="w-4/12 text-left text-lg">গ্যাস সুবিধা:</label>
+            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">গ্যাস সুবিধা:</label>
             <div className="w-full flex">
               <div className="flex items-center rounded-full overflow-hidden">
                 <button
@@ -302,7 +302,7 @@ const PropertiesDetailsFrom = ({
 
           {/* WIFI সুবিধা */}
           <div className="flex items-start gap-4">
-            <label className="w-4/12 text-left text-lg">WIFI সুবিধা:</label>
+            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">WIFI সুবিধা:</label>
             <div className="w-full flex">
               <div className="flex items-center rounded-full overflow-hidden">
                 <button
@@ -334,7 +334,7 @@ const PropertiesDetailsFrom = ({
 
           {/* Submit */}
           <div className="pt-4 flex justify-end">
-            <Button className="w-auto text-lg bg-[#157347] hover:bg-green-700">
+            <Button className="w-auto text-sm bg-[#157347] hover:bg-green-700">
               খুঁজুন
             </Button>
           </div>

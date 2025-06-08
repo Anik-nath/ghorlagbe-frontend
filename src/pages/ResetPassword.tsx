@@ -41,7 +41,7 @@ const ResetPassword = () => {
   return (
     <div className="bg-white py-16">
       <div className="container mx-auto px-4">
-        <div className="max-w-7xl mx-auto px-2">
+        <div className="max-w-6xl mx-auto px-2">
           <div className="flex justify-center">
             <div className="md:w-6/12 w-full">
               <Card className="border-none bg-gray-50">

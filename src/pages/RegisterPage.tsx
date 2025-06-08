@@ -71,10 +71,10 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="bg-white py-14">
+    <div className=" bg-white py-16">
       <div className="container mx-auto px-4">
-        <div className="max-w-7xl mx-auto px-2">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-0">
             {/* Left Section - Benefits */}
             <div className="flex flex-col justify-center">
               <div className="bg-white rounded-lg p-8">
@@ -82,26 +82,26 @@ const RegisterPage = () => {
                   <div className="w-14 h-14 border border-[#198754] rounded-full flex items-center justify-center mr-4">
                     <FaShieldHeart className="h-10 w-10 text-[#198754]" />
                   </div>
-                  <h2 className="text-5xl font-medium">ভেরিফাই করুন</h2>
+                  <h2 className="text-4xl font-medium">ভেরিফাই করুন</h2>
                 </div>
 
                 <div className="space-y-2">
                   <div className="flex items-start space-x-3">
                     <FaHeartCircleCheck className="h-5 w-5 text-[#198754] mt-1 flex-shrink-0" />
-                    <p className="text-gray-900 text-xl">
+                    <p className="text-gray-900 text-lg">
                       সহজে ভাড়াটিয়ার সাথে বিশ্বাস বাড়ান
                     </p>
                   </div>
                   <div className="flex items-start space-x-3">
                     <FaHeartCircleCheck className="h-5 w-5 text-[#198754] mt-1 flex-shrink-0" />
-                    <p className="text-gray-900 text-xl">
+                    <p className="text-gray-900 text-lg">
                       আলাদা দাঁড়া এবং সুরক্ষা এবং নিরাপত্তা এবং আত্মনির্ভরণে
                       আপনি প্রতিশ্রুতি দেখান
                     </p>
                   </div>
                   <div className="flex items-start space-x-3">
                     <FaHeartCircleCheck className="h-5 w-5 text-[#198754] mt-1 flex-shrink-0" />
-                    <p className="text-gray-900 text-xl">
+                    <p className="text-gray-900 text-lg">
                       শুধুমাত্র কিছু মিনিট
                     </p>
                   </div>
@@ -111,9 +111,9 @@ const RegisterPage = () => {
 
             {/* Right Section - Registration Form */}
             <div>
-              <Card className="border-none rounded-none bg-gray-50">
-                <CardContent className="p-12 font-medium">
-                  <h1 className="text-[1.7rem] text-center mb-8">
+              <Card className="border-none bg-gray-50">
+                <CardContent className="p-10 font-medium">
+                  <h1 className="text-[1.5rem] text-center">
                     রেজিস্ট্রেশন করুন
                   </h1>
 
@@ -134,7 +134,7 @@ const RegisterPage = () => {
                         onChange={(e) =>
                           setFormData({ ...formData, fullName: e.target.value })
                         }
-                        className="h-12 rounded-r-md rounded-l-none !text-lg !leading-6"
+                        className="h-12 rounded-r-md rounded-l-none !text-md !leading-6"
                         required
                       />
                     </div>
@@ -152,7 +152,7 @@ const RegisterPage = () => {
                         onChange={(e) =>
                           setFormData({ ...formData, phone: e.target.value })
                         }
-                        className="h-12 rounded-r-md rounded-l-none !text-lg !leading-6"
+                        className="h-12 rounded-r-md rounded-l-none !text-md !leading-6"
                         required
                       />
                     </div>
@@ -170,7 +170,7 @@ const RegisterPage = () => {
                         onChange={(e) =>
                           setFormData({ ...formData, password: e.target.value })
                         }
-                        className="h-12 rounded-r-md rounded-l-none !text-lg !leading-6"
+                        className="h-12 rounded-r-md rounded-l-none !text-md !leading-6"
                         required
                       />
                     </div>
@@ -191,21 +191,21 @@ const RegisterPage = () => {
                             confirmPassword: e.target.value,
                           })
                         }
-                        className="h-12 rounded-r-md rounded-l-none !text-lg !leading-6"
+                        className="h-12 rounded-r-md rounded-l-none !text-md !leading-6"
                         required
                       />
                     </div>
 
                     <Button
                       type="submit"
-                      className="w-full h-12 bg-[#198754] hover:bg-[#157347] text-lg"
+                      className="w-full h-10 bg-[#198754] hover:bg-[#157347] text-sm"
                       disabled={isLoading}
                     >
                       {isLoading ? "নিবন্ধন হচ্ছে..." : "নিবন্ধন"}
                     </Button>
 
                     <div className="text-center space-y-2">
-                      <div className="flex justify-end gap-8 text-lg font-normal text-gray-600">
+                      <div className="flex justify-end gap-8 text-md font-normal text-gray-600">
                         <Link
                           to="/password/reset"
                           className="text-blue-600 underline"

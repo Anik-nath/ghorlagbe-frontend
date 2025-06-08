@@ -75,7 +75,7 @@ const LatestAdvertisement = () => {
 
   return (
     <section className="py-16">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="md:text-6xl sm:text-5xl text-3xl font-bold mb-4">
             সাম্প্রতিক <span className="text-[#198754]">বিজ্ঞাপন</span>
@@ -90,7 +90,7 @@ const LatestAdvertisement = () => {
 
         <div className="text-center mt-8">
           <Link to="/ads">
-            <Button className="bg-[#198754] text-md font-medium hover:bg-[#157347] text-white">
+            <Button className="bg-[#198754] text-sm font-medium hover:bg-[#157347] text-white">
               আরো ব্রাউজ করুন
               <FaArrowRight className="w-6 h-6 " />
             </Button>

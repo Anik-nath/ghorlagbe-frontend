@@ -6,17 +6,17 @@ const AccountCard = () => {
       <h3 className="font-medium mb-3 text-lg">অ্যাকাউন্ট</h3>
       <ul className="space-y-1 text-md pl-10 font-medium">
         <li>
-          <a href="#" className="text-blue-500 hover:underline">
+          <a href="/myads" className="text-blue-500 hover:underline">
             আমার বিজ্ঞাপন সমূহ
           </a>
         </li>
         <li>
-          <a href="#" className="text-blue-500 hover:underline">
+          <a href="/favorites" className="text-blue-500 hover:underline">
             আমার ফেভারিটস
           </a>
         </li>
         <li>
-          <a href="#" className="text-blue-500 hover:underline">
+          <a href="/profile" className="text-blue-500 hover:underline">
             আমার প্রোফাইল
           </a>
         </li>

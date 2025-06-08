@@ -49,15 +49,15 @@ const ContactPage = () => {
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12 bg-gray-50 py-12 px-4">
-            <h1 className="text-4xl font-medium mb-4">
+            <h1 className="md:text-3xl text-2xl font-medium mb-4">
               যোগাযোগ | সাহায্য দরকার?
             </h1>
-            <hr className="my-4 border-t border-gray-200" />
+            <hr className="my-4 border-t border-gray-300" />
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-20">
             {/* Contact Information */}
             <div className="bg-gray-50 p-8 px-12 h-fit">
-              <h2 className="text-xl font-semibold mb-8">যোগাযোগ করুন</h2>
+              <h2 className="text-lg font-semibold mb-8">যোগাযোগ করুন</h2>
 
               <div className="space-y-4 pl-4 text-lg">
                 <div className="flex items-center gap-2">
@@ -75,7 +75,7 @@ const ContactPage = () => {
                   <span>Mon to Fri: 9am – 8.30pm</span>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex  items-center gap-2">
                   <FaCalendar className="h-5 w-5 text-gray-700" />
                   <span>Weekends: 10am – 7.30pm</span>
                 </div>
@@ -134,7 +134,7 @@ const ContactPage = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <Input
-                          className="!text-lg !font-normal"
+                          className="!text-md !font-normal"
                           value={formData.firstname || ""}
                           onChange={(e) =>
                             setFormData({
@@ -149,7 +149,7 @@ const ContactPage = () => {
                       </div>
                       <div>
                         <Input
-                          className="!text-lg !font-normal"
+                          className="!text-md !font-normal"
                           value={formData.lastname || ""}
                           onChange={(e) =>
                             setFormData({
@@ -167,7 +167,7 @@ const ContactPage = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <Input
-                          className="!text-lg !font-normal"
+                          className="!text-md !font-normal"
                           type="tel"
                           value={formData.phone}
                           onChange={(e) =>
@@ -180,7 +180,7 @@ const ContactPage = () => {
                       </div>
                       <div>
                         <Input
-                          className="!text-lg !font-normal"
+                          className="!text-md !font-normal"
                           type="email"
                           value={formData.email}
                           onChange={(e) =>
@@ -195,7 +195,7 @@ const ContactPage = () => {
 
                     <div>
                       <Input
-                        className="!text-lg !font-normal"
+                        className="!text-md !font-normal"
                         type="text"
                         value={formData.subject}
                         onChange={(e) =>
@@ -209,7 +209,7 @@ const ContactPage = () => {
 
                     <div>
                       <Textarea
-                        className="!text-lg !font-normal"
+                        className="!text-md !font-normal"
                         value={formData.comment || ""}
                         onChange={(e) =>
                           setFormData({ ...formData, comment: e.target.value })
@@ -223,7 +223,7 @@ const ContactPage = () => {
 
                     <Button
                       type="submit"
-                      className="w-auto text-lg bg-[#198754] hover:bg-[#157347] text-white "
+                      className="w-auto text-md bg-[#198754] hover:bg-[#157347] text-white "
                     >
                       Send Message
                     </Button>

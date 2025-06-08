@@ -38,13 +38,13 @@ const ProfilePage = () => {
   }
 
   return (
-    <div className="min-h-screen max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className=" flex flex-col md:flex-row gap-4 py-12">
         {/* Main Card */}
         <Card className="w-full mx-auto p-0 bg-gray-50 ">
-          <CardHeader className="flex flex-col items-center rounded-t-lg pt-4 pb-4">
+          <CardHeader className="flex flex-medium items-center rounded-t-lg pt-4 pb-4">
             {/*  Card Title */}
-            <CardTitle className="text-2xl font-semibold text-gray-800 mb-2">
+            <CardTitle className="md:text-2xl text-xl font-normal text-gray-800 mb-2">
               আমার প্রোফাইল
               {/* Profile Picture */}
               <div className="relative mb-4">
@@ -81,7 +81,7 @@ const ProfilePage = () => {
                   }}
                 />
                 <Button
-                  className="absolute text-lg left-1/2 -bottom-4 transform -translate-x-1/2 bg-orange-500 hover:bg-orange-400 text-white px-4 py-2 rounded-full"
+                  className="absolute text-lg font-normal left-1/2 -bottom-4 transform -translate-x-1/2 bg-orange-400 hover:bg-orange-500 text-white px-4 py-2 rounded-full"
                   size="sm"
                   type="button"
                   onClick={() => {
@@ -98,7 +98,7 @@ const ProfilePage = () => {
             <form className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-lg mb-0">
+                  <label className="block text-md mb-0">
                     মোবাইল <span>*</span>
                   </label>
                   <Input
@@ -109,7 +109,7 @@ const ProfilePage = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-lg mb-0">
+                  <label className="block text-md mb-0">
                     নাম <span>*</span>
                   </label>
                   <Input
@@ -118,12 +118,12 @@ const ProfilePage = () => {
                       setFormData({ ...formData, name: e.target.value })
                     }
                     placeholder="আপনার নাম লিখুন"
-                    className="!text-lg !border border-gray-300"
+                    className="!text-md !border border-gray-300"
                   />
                 </div>
                 {/* Email */}
                 <div>
-                  <label className="block text-lg mb-0">
+                  <label className="block text-md mb-0">
                     Email <span>*</span>
                   </label>
                   <Input
@@ -133,16 +133,16 @@ const ProfilePage = () => {
                       setFormData({ ...formData, email: e.target.value })
                     }
                     placeholder="আপনার ইমেইল লিখুন"
-                    className="!text-lg !border border-gray-300"
+                    className="!text-md !border border-gray-300"
                   />
                 </div>
                 {/* Gender Selection */}
                 <div>
-                  <label className="block text-lg mb-0">Gender</label>
+                  <label className="block text-md mb-0">Gender</label>
                   <div className="flex space-x-4">
                     <button
                       type="button"
-                      className={`px-12 py-1 rounded-md border ${
+                      className={`px-12 py-1 rounded border ${
                         formData.gender === "male"
                           ? "bg-gray-800 text-white"
                           : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -156,10 +156,10 @@ const ProfilePage = () => {
                     </button>
                     <button
                       type="button"
-                      className={`px-12 py-1 rounded-md border ${
+                      className={`px-12 py-1 rounded border ${
                         formData.gender === "female"
                           ? "bg-gray-800 text-white"
-                          : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                          : " text-gray-900 border-black"
                       }`}
                       onClick={() =>
                         isEditing &&
@@ -174,7 +174,7 @@ const ProfilePage = () => {
 
               {/* Location Selection */}
               <div>
-                <label className="block text-lg mb-0">Location</label>
+                <label className="block text-md mb-0">Location</label>
                 <div className="grid grid-cols-1 md:grid-cols-3">
                   <select
                     className="w-full px-3 py-2 border border-gray-300 border-r-0"
@@ -212,7 +212,7 @@ const ProfilePage = () => {
                   variant="outline"
                   className="flex items-center space-x-2 text-white hover:bg-[##157347] bg-[#198754] hover:text-white"
                 >
-                  <span className="text-lg font-normal">আপডেট করুন</span>
+                  <span className="text-md font-normal">আপডেট করুন</span>
                 </Button>
               </div>
             </form>

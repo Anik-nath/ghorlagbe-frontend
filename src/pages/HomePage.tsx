@@ -18,10 +18,10 @@ const HomePage = () => {
         }}
       >
         <div className="container mx-auto px-4 text-center text-white">
-          <h1 className="text-5xl md:text-[5rem] font-bold mb-8">
+          <h1 className="text-5xl md:text-[4.5rem] font-bold mb-8">
             বাড়ি খুঁজুন <span className="text-[#09B800]">সহজে</span>
           </h1>
-          <p className="text-xl md:text-3xl font-normal mb-12 py-2 text-white">
+          <p className="text-xl md:text-2xl font-normal mb-12 py-2 text-white">
             92,947 রুম এবং ফ্ল্যাটমেট পাওয়া যাচ্ছে
           </p>
 
@@ -134,7 +134,7 @@ const HomePage = () => {
             <Button
               asChild
               variant="default"
-              className="bg-black/50 hover:bg-black border rounded-none text-lg px-12 py-6"
+              className="bg-black/50 hover:bg-black border rounded-none text-md px-10 py-5"
             >
               <Link to="/search" className="flex items-center gap-2">
                 <span>বিস্তারিত খুঁজুন</span>

@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Phone, Mail } from "lucide-react";
 import logo from "/assets/logo-main.png";
 import { FaFacebook, FaYoutube, FaInstagram } from "react-icons/fa";
 import {
@@ -14,7 +13,7 @@ import {
 const Footer = () => {
   return (
     <footer className="bg-[#04331d] text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6 py-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-5 pb-8">
           {/* Brand Section */}
           <div className="col-span-1 md:col-span-2">
@@ -29,7 +28,7 @@ const Footer = () => {
                 />
               </Link>
             </div>
-            <p className="text-white mb-4 max-w-md text-lg font-medium">
+            <p className="text-white mb-4 max-w-sm text-md font-normal">
               "ঘর লাগবে" ভাড়া নেওয়া সংক্রান্ত একটি আধুনিক ওয়েবসাইট, যা আপনার
               পছন্দের ঘর/বিট/ফ্ল্যাট সংবেদ খোঁজাতে সাহায্য করে।
             </p>
@@ -37,8 +36,8 @@ const Footer = () => {
 
           {/* Services Section */}
           <div>
-            <h3 className="font-bold text-xl mb-4">আমাদের সম্পর্কে</h3>
-            <ul className="space-y-2 text-white text-lg font-normal ">
+            <h3 className="font-bold text-lg mb-4">আমাদের সম্পর্কে</h3>
+            <ul className="space-y-2 text-white text-md font-normal ">
               <li>
                 <Link
                   to="/about"
@@ -77,10 +76,10 @@ const Footer = () => {
           {/* Contact Section */}
           <div className="col-span-1 md:col-span-2 flex md:flex-col md:items-end">
             <div>
-              <h3 className="font-bold text-white text-xl mb-4 ">
+              <h3 className="font-bold text-white text-lg mb-4 ">
                 যোগাযোগ | সাহায্য দরকার?
               </h3>
-              <div className="space-y-1 text-white font-normal text-lg ">
+              <div className="space-y-1 text-white font-normal text-md ">
                 <h1 className="hover:text-black transition-colors">
                   যোগাযোগ করুন
                 </h1>
@@ -92,7 +91,7 @@ const Footer = () => {
                   <FaEnvelope className="h-4 w-4" />
                   <span>support@ghorlagbe.com</span>
                 </div>
-                <div className="text-lg ">
+                <div className="text-md ">
                   <p className="hover:text-black transition-colors">
                     Mon to Fri: 9am – 8.30pm
                   </p>
@@ -104,7 +103,7 @@ const Footer = () => {
 
               {/* Social Media */}
               <div className="mt-6 flex flex-row items-center gap-1">
-                <p className="text-xl mr-2">সোশ্যাল নেটওয়ার্কে আমরা:</p>
+                <p className="text-lg mr-2">সোশ্যাল নেটওয়ার্কে আমরা:</p>
                 <div className="flex space-x-4">
                   <Link to="https://ghor.saifmorshed.com/#">
                     <FaFacebook className="h-5 w-5" />
@@ -127,7 +126,7 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="border-t border-gray-100 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <Link to="https://ghor.saifmorshed.com/">
-            <div className="flex flex-row items-center text-xl text-white font-bold mb-4 md:mb-0">
+            <div className="flex flex-row items-center text-lg text-white font-bold mb-4 md:mb-0">
               <span>GhorLagbe apps (free)</span>
 
               <span className="mx-2 flex flex-row items-center ">
@@ -140,7 +139,7 @@ const Footer = () => {
               </span>
             </div>
           </Link>
-          <div className="text-lg text-gray-100">
+          <div className="text-md text-gray-100">
             © 2022-2024 GhorLagbe Ltd.
           </div>
         </div>

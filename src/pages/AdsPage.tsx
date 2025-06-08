@@ -92,20 +92,20 @@ const AdsPage = () => {
 
   return (
     <div className="min-h-screen ">
-      <div className="max-w-7xl mx-auto px-8 py-8">
+      <div className="max-w-6xl mx-auto px-4 py-8">
         {/* Search Header */}
-        <div className="max-w-7xl mb-14">
+        <div className="max-w-6xl mb-14">
           <SearchForm setSearchType={() => {}} />
         </div>
-        <div className="flex flex-col lg:flex-row gap-6">
+        <div className="flex flex-col lg:flex-row gap-3">
           {/* Filters Sidebar */}
-          <div className="lg:w-80">
+          <div className="lg:w-72">
             <Card>
-              <CardContent className="p-6 space-y-6">
+              <CardContent className="p-4 space-y-5">
                 {/* Property Type */}
                 <div>
                   <label className="block text-md font-medium text-gray-900 mb-3">
-                    প্রশাসনিক ধরণ:
+                    প্রপার্টির ধরন:
                   </label>
                   <Select>
                     <SelectTrigger className="w-full">
@@ -228,7 +228,7 @@ const AdsPage = () => {
                       <button
                         type="button"
                         onClick={() => setLift("yes")}
-                        className={`flex items-center px-4 py-1 border border-r-0 border-[#157347] rounded-l-full transition-colors ${
+                        className={`flex items-center px-2 py-0.5 border border-r-0 border-[#157347] rounded-l-full transition-colors ${
                           lift === "yes"
                             ? "bg-[#157347] text-white"
                             : "text-[#157347]"
@@ -244,7 +244,7 @@ const AdsPage = () => {
                       <button
                         type="button"
                         onClick={() => setLift("no")}
-                        className={`flex items-center px-4 py-1 border border-gray-700 rounded-r-full transition-colors ${
+                        className={`flex items-center px-2 py-0.5 border border-gray-700 rounded-r-full transition-colors ${
                           lift === "no"
                             ? "bg-gray-900 text-white"
                             : "text-gray-700"
@@ -272,7 +272,7 @@ const AdsPage = () => {
                       <button
                         type="button"
                         onClick={() => setGenerator("yes")}
-                        className={`flex items-center px-4 py-1 border border-r-0 border-[#157347] rounded-l-full transition-colors ${
+                        className={`flex items-center px-2 py-0.5 border border-r-0 border-[#157347] rounded-l-full transition-colors ${
                           generator === "yes"
                             ? "bg-[#157347] text-white"
                             : "text-[#157347]"
@@ -286,7 +286,7 @@ const AdsPage = () => {
                       <button
                         type="button"
                         onClick={() => setGenerator("no")}
-                        className={`flex items-center px-4 py-1 border border-gray-700 rounded-r-full transition-colors ${
+                        className={`flex items-center px-2 py-0.5 border border-gray-700 rounded-r-full transition-colors ${
                           generator === "no"
                             ? "bg-gray-900 text-white"
                             : "text-gray-700"
@@ -312,7 +312,7 @@ const AdsPage = () => {
                       <button
                         type="button"
                         onClick={() => setSecurity("yes")}
-                        className={`flex items-center px-4 py-1 border border-r-0 border-[#157347] rounded-l-full transition-colors ${
+                        className={`flex items-center px-2 py-0.5 border border-r-0 border-[#157347] rounded-l-full transition-colors ${
                           security === "yes"
                             ? "bg-[#157347] text-white"
                             : "text-[#157347]"
@@ -326,7 +326,7 @@ const AdsPage = () => {
                       <button
                         type="button"
                         onClick={() => setSecurity("no")}
-                        className={`flex items-center px-4 py-1 border border-gray-700 rounded-r-full transition-colors ${
+                        className={`flex items-center px-2 py-0.5 border border-gray-700 rounded-r-full transition-colors ${
                           security === "no"
                             ? "bg-gray-900 text-white"
                             : "text-gray-700"
@@ -352,7 +352,7 @@ const AdsPage = () => {
                       <button
                         type="button"
                         onClick={() => setParking("yes")}
-                        className={`flex items-center px-4 py-1 border border-r-0 border-[#157347] rounded-l-full transition-colors ${
+                        className={`flex items-center px-2 py-0.5 border border-r-0 border-[#157347] rounded-l-full transition-colors ${
                           parking === "yes"
                             ? "bg-[#157347] text-white"
                             : "text-[#157347]"
@@ -366,7 +366,7 @@ const AdsPage = () => {
                       <button
                         type="button"
                         onClick={() => setParking("no")}
-                        className={`flex items-center px-4 py-1 border border-gray-700 rounded-r-full transition-colors ${
+                        className={`flex items-center px-2 py-0.5 border border-gray-700 rounded-r-full transition-colors ${
                           parking === "no"
                             ? "bg-gray-900 text-white"
                             : "text-gray-700"
@@ -392,7 +392,7 @@ const AdsPage = () => {
                       <button
                         type="button"
                         onClick={() => setGas("line")}
-                        className={`flex items-center px-4 py-1 border border-r-0 border-[#157347] rounded-l-full transition-colors ${
+                        className={`flex items-center px-2 py-0.5 border border-r-0 border-[#157347] rounded-l-full transition-colors ${
                           gas === "line"
                             ? "bg-[#157347] text-white"
                             : "text-[#157347]"
@@ -406,7 +406,7 @@ const AdsPage = () => {
                       <button
                         type="button"
                         onClick={() => setGas("silendar")}
-                        className={`flex items-center px-4 py-1 border border-r-0 border-[#157347] transition-colors ${
+                        className={`flex items-center px-2 py-0.5 border border-r-0 border-[#157347] transition-colors ${
                           gas === "silendar"
                             ? "bg-[#157347] text-white"
                             : "text-[#157347]"
@@ -420,7 +420,7 @@ const AdsPage = () => {
                       <button
                         type="button"
                         onClick={() => setGas("no")}
-                        className={`flex items-center px-4 py-1 border border-gray-700 rounded-r-full transition-colors ${
+                        className={`flex items-center px-2 py-0.5 border border-gray-700 rounded-r-full transition-colors ${
                           gas === "no"
                             ? "bg-gray-900 text-white"
                             : "text-gray-700"
@@ -446,7 +446,7 @@ const AdsPage = () => {
                       <button
                         type="button"
                         onClick={() => setWifi("yes")}
-                        className={`flex items-center px-4 py-1 border border-r-0 border-[#157347] rounded-l-full transition-colors ${
+                        className={`flex items-center px-2 py-0.5 border border-r-0 border-[#157347] rounded-l-full transition-colors ${
                           wifi === "yes"
                             ? "bg-[#157347] text-white"
                             : "text-[#157347]"
@@ -460,7 +460,7 @@ const AdsPage = () => {
                       <button
                         type="button"
                         onClick={() => setWifi("no")}
-                        className={`flex items-center px-4 py-1 border border-gray-700 rounded-r-full transition-colors ${
+                        className={`flex items-center px-2 py-0.5 border border-gray-700 rounded-r-full transition-colors ${
                           wifi === "no"
                             ? "bg-gray-900 text-white"
                             : "text-gray-700"

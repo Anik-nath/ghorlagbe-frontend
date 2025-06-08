@@ -22,14 +22,14 @@ const PostAdSection = () => {
 
   return (
     <section className="py-12 md:py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-3xl sm:text-5xl lg:text-7xl font-semibold text-gray-800">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-800">
           বিজ্ঞাপন পোস্ট করুন
           <br />
           এবং আপনার <span className="text-[#157347]">রুম ভাড়া দিন</span>
         </h2>
       </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 my-8 sm:my-12 md:my-16">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 my-8 sm:my-12 md:my-16">
         {features.map((feature, index) => (
           <div
             key={index}
@@ -42,14 +42,14 @@ const PostAdSection = () => {
                 className="object-contain"
               />
             </div>
-            <h3 className="text-xl sm:text-2xl lg:text-3xl font-medium text-gray-800">
+            <h3 className="text-xl lg:text-2xl font-semibold text-gray-800">
               {feature.title}
             </h3>
           </div>
         ))}
       </div>
 
-      <div className="text-center mt-8 sm:mt-12">
+      <div className="text-center sm:mt-12">
         <Link
           to="/post-ad"
           className="bg-[#198754] hover:bg-[#157347] text-white px-4 py-2 sm:px-6 sm:py-3 rounded-md inline-flex items-center font-medium text-sm sm:text-md transition-colors duration-200"

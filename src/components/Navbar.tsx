@@ -70,26 +70,27 @@ const Navbar = () => {
   };
   return (
     <nav className="bg-white border-b border-gray-200  z-50 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4">
         <div className="flex justify-between items-center h-auto py-4">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
               src={logo}
               alt="ঘর লাগবে লোগো"
-              className="w-full md:h-20 h-16 object-contain "
+              // className="w-full md:h-20 h-16 object-contain "
+              className="w-auto h-16 sm:h-16 md:h-20 lg:h-20 object-contain"
               loading="lazy"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:hidden xl:flex 2xl:flex items-center space-x-1">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 to={item.href}
                 onClick={item.onClick}
-                className={`px-2 py-2 text-lg font-normal transition-colors duration-200 ${
+                className={`px-1 py-2 text-md font-normal transition-colors duration-200 ${
                   isActive(item.href)
                     ? "text-[#198754] border-[#198754]"
                     : "text-gray-700 hover:text-[#198754]"
@@ -156,21 +157,21 @@ const Navbar = () => {
                     onClick={handlePostAdClick}
                     variant="ghost"
                     size="sm"
-                    className="text-lg text-[#198754] hover:bg-transparent hover:text-[#198754] flex items-center"
+                    className="text-md text-[#198754] hover:bg-transparent hover:text-[#198754] flex items-center"
                   >
                     <FaPlusCircle className="h-6 w-6 text-[#198754]" />
                     পোস্ট বিজ্ঞাপন
                   </Button>
                 </Link>
                 <Link to="/register">
-                  <button className="bg-[#198754] flex flex-row py-2 gap-2 rounded-md hover:bg-[#157347] text-white text-lg px-4 font-normal">
-                    <FaUserPlus className="h-6 w-6" />
+                  <button className="bg-[#198754] flex flex-row py-1.5 gap-2 rounded-md hover:bg-[#157347] text-white text-md px-2.5 font-normal">
+                    <FaUserPlus className="h-5 w-5" />
                     রেজিস্ট্রেশন
                   </button>
                 </Link>
                 <Link to="/login">
-                  <button className="flex flex-row py-2 gap-2 rounded-md border items-center text-lg font-normal px-2 text-[#198754] border-[#198754] hover:bg-[#198754] hover:text-white">
-                    <FaRegUser className="h-5 w-5 mb-1" />
+                  <button className="flex flex-row py-1.5 gap-2 rounded-md border items-center text-md font-normal px-2.5 text-[#198754] border-[#198754] hover:bg-[#198754] hover:text-white">
+                    <FaRegUser className="h-4 w-4 mb-1" />
                     লগইন
                   </button>
                 </Link>
@@ -230,7 +231,7 @@ const Navbar = () => {
                       setIsOpen(false);
                       if (item.onClick) item.onClick(e);
                     }}
-                    className={`block px-3 py-3 text-base font-medium rounded-md transition-colors duration-200 ${
+                    className={`block px-3 py-1 text-base font-medium rounded-md transition-colors duration-200 ${
                       isActive(item.href)
                         ? "text-green-600 bg-green-50"
                         : "text-gray-700 hover:text-green-600 hover:bg-gray-50"
@@ -299,18 +300,20 @@ const Navbar = () => {
                           পোস্ট বিজ্ঞাপন
                         </Button>
                       </Link>
-                      <Link to="/register" onClick={() => setIsOpen(false)}>
-                        <button className="bg-[#198754] flex flex-row py-2 gap-2 rounded-md hover:bg-[#157347] text-white text-lg px-4 font-normal">
-                          <FaUserPlus className="h-6 w-6" />
-                          রেজিস্ট্রেশন
-                        </button>
-                      </Link>
-                      <Link to="/login" onClick={() => setIsOpen(false)}>
-                        <button className="flex flex-row py-2 gap-2 rounded-md border items-center text-lg font-normal px-2 text-[#198754] border-[#198754] hover:bg-[#198754] hover:text-white">
-                          <FaRegUser className="h-5 w-5 mb-1" />
-                          লগইন
-                        </button>
-                      </Link>
+                      <div className="flex flex-row-reverse justify-end gap-2">
+                        <Link to="/register" onClick={() => setIsOpen(false)}>
+                          <button className="bg-[#198754] flex flex-row py-1.5 gap-2 rounded-md hover:bg-[#157347] text-white text-md px-2.5 font-normal">
+                            <FaUserPlus className="h-5 w-5" />
+                            রেজিস্ট্রেশন
+                          </button>
+                        </Link>
+                        <Link to="/login" onClick={() => setIsOpen(false)}>
+                          <button className="flex flex-row py-1.5 gap-2 rounded-md border items-center text-md font-normal px-2.5 text-[#198754] border-[#198754] hover:bg-[#198754] hover:text-white">
+                            <FaRegUser className="h-4 w-4 mb-1" />
+                            লগইন
+                          </button>
+                        </Link>
+                      </div>
                     </>
                   )}
                 </div>

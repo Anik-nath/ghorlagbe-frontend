@@ -4,15 +4,15 @@ import { Button } from "@/components/ui/button";
 
 const SearchForm = ({ setSearchType }) => {
   return (
-    <div className="bg-white rounded-md p-6 border">
-      <div className="grid grid-cols-1 md:grid-cols-6 gap-2 items-center">
+    <div className="bg-white rounded-md p-4 border">
+      <div className="grid grid-cols-1 md:grid-cols-6 items-center">
         <div className="relative md:col-span-3">
           <span className="absolute inset-y-0 left-0 flex items-center p-3 border border-l-0">
             <Search size={20} />
           </span>
           <Input
             placeholder="খুঁজুন ফ্ল্যাট / সিট রুম"
-            className="pl-14 !text-lg"
+            className="pl-14"
           />
         </div>
         <select
@@ -97,7 +97,7 @@ const SearchForm = ({ setSearchType }) => {
           </option>
         </select>
         <div className="flex items-center justify-around">
-          <Button className="w-fit text-lg bg-[#157347] hover:bg-green-700">
+          <Button className="w-fit text-sm bg-[#157347] hover:bg-green-700">
             খুঁজুন
           </Button>
         </div>

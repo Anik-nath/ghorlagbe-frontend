@@ -42,7 +42,7 @@ const SearchPage = () => {
             <div className="bg-white rounded-lg p-1 shadow-sm">
               <button
                 onClick={() => setSearchType("খুঁজুন")}
-                className={`px-6 py-2 rounded-md text-lg transition-colors ${
+                className={`px-6 py-2 rounded-md text-sm transition-colors ${
                   searchType === "খুঁজুন"
                     ? "hover:bg-[#157347] bg-[#198754] text-white"
                     : "text-[#198754] hover:text-[#198754]"
@@ -52,7 +52,7 @@ const SearchPage = () => {
               </button>
               <button
                 onClick={() => setSearchType("বিস্তারিত খুঁজুন")}
-                className={`px-6 py-2 rounded-md text-lg transition-colors ${
+                className={`px-6 py-2 rounded-md text-sm transition-colors ${
                   searchType === "বিস্তারিত খুঁজুন"
                     ? "hover:bg-[#157347] bg-[#198754] text-white"
                     : "text-[#198754] hover:text-[#198754]"

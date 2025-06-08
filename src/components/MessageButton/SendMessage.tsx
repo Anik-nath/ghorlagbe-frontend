@@ -94,7 +94,7 @@ const SendMessage = () => {
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-[625px]">
+      <DialogContent className="sm:max-w-[625px] w-full">
         <DialogHeader>
           <DialogTitle className="text-left flex items-center gap-2">
             {isAuthenticated ? (
@@ -138,7 +138,7 @@ const SendMessage = () => {
                             : "bg-gray-200 text-gray-800"
                         }`}
                       >
-                        <p>{message.text}</p>
+                        <p className="text-sm">{message.text}</p>
                         <p className="text-xs mt-1 opacity-70">
                           {message.timestamp.toLocaleTimeString([], {
                             hour: "2-digit",
