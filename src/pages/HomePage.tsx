@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { Link } from "react-router-dom";
 import bgslide from "/assets/others/bg-slide.jpg";
+import { FaPeopleRoof } from "react-icons/fa6";
 
 const HomePage = () => {
   return (
@@ -134,9 +135,10 @@ const HomePage = () => {
             <Button
               asChild
               variant="default"
-              className="bg-black/50 hover:bg-black border rounded-none text-md px-10 py-5"
+              className="bg-black/50 hover:bg-black border rounded-none text-md px-8 py-5"
             >
               <Link to="/search" className="flex items-center gap-2">
+                <FaPeopleRoof className="w-6 h-6" />
                 <span>বিস্তারিত খুঁজুন</span>
               </Link>
             </Button>
