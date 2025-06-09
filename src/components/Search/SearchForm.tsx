@@ -2,7 +2,7 @@ import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-const districts = [
+export const districts = [
   { id: 1, name: "কুমিল্লা(Comilla)" },
   { id: 2, name: "ফেনী(Feni)" },
   { id: 3, name: "ব্রাহ্মণবাড়িয়া(Brahmanbaria)" },
