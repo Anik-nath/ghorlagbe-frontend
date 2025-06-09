@@ -89,7 +89,7 @@ const SearchForm = ({ setSearchType }) => {
         {/* District Select */}
         <div className="md:col-span-1">
           <select
-            className="w-full px-4 py-2 border border-gray-300 rounded-md"
+            className="w-full px-4 py-2 bg-white border border-gray-300 rounded-md"
             id="district"
             name="district_id"
           >
@@ -104,13 +104,13 @@ const SearchForm = ({ setSearchType }) => {
 
         {/* Area Select */}
         <div className="md:col-span-1">
-          <select className="w-full px-4 py-2 border border-gray-300 rounded-md">
+          <select className="w-full bg-white px-4 py-2 border border-gray-300 rounded-md">
             <option value="">এলাকা</option>
           </select>
         </div>
 
         {/* Search Button */}
-        <div className="md:col-span-1 mx-auto">
+        <div className="md:col-span-1 mx-auto w-full">
           <Button className="w-full md:w-fit text-sm bg-[#157347] hover:bg-green-700">
             খুঁজুন
           </Button>
