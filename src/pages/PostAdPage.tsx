@@ -50,7 +50,7 @@ export default function HomePage() {
         <section className="py-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="md:col-span-2">
-              <h2 className="text-3xl font-medium mb-8 text-gray-800">
+              <h2 className="md:text-3xl text-2xl font-medium mb-8 text-gray-800">
                 বিনামূল্যে বিজ্ঞাপন পোস্ট করুন
               </h2>
               <h3 className="text-xl font-medium mb-2 text-gray-800">
