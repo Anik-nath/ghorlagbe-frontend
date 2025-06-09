@@ -38,7 +38,7 @@ const ProfilePage = () => {
   }
 
   return (
-    <div className="min-h-screen max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen max-w-6xl mx-auto md:px-4 px-8 sm:px-6 lg:px-8">
       <div className=" flex flex-col md:flex-row gap-4 py-12">
         {/* Main Card */}
         <Card className="w-full mx-auto p-0 bg-gray-50 ">
