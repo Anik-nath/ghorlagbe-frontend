@@ -40,7 +40,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen">
-      <div className="my-12 max-w-6xl mx-auto px-4">
+      <div className="my-12 max-w-6xl mx-auto md:px-4 px-7">
         {/* Search */}
         <section className="max-w-6xl mb-6">
           <SearchForm setSearchType={() => {}} />
