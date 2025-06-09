@@ -21,19 +21,19 @@ const StepOne = ({
               id: "rent-for-house",
               value: "0",
               label: "ফ্লাট ভাড়া",
-              icon: "/public/assets/icons/housing.png",
+              icon: "/assets/icons/housing.png",
             },
             {
               id: "rent-for-flat",
               value: "1",
               label: "সিট ভাড়া",
-              icon: "/public/assets/icons/beds.png",
+              icon: "/assets/icons/beds.png",
             },
             {
               id: "rent-for-sit",
               value: "2",
               label: "সাবলেট",
-              icon: "/public/assets/icons/house.png",
+              icon: "/assets/icons/house.png",
             },
           ].map((item) => (
             <div key={item.id} className="text-center relative">
@@ -128,31 +128,31 @@ const StepOne = ({
               id: "islam",
               value: "islam",
               label: "ইসলাম",
-              icon: "/public/assets/icons/islam.png",
+              icon: "/assets/icons/islam.png",
             },
             {
               id: "hindu",
               value: "hindu",
               label: "হিন্দু",
-              icon: "/public/assets/icons/hindu.png",
+              icon: "/assets/icons/hindu.png",
             },
             {
               id: "christian",
               value: "christian",
               label: "খ্রিষ্টান",
-              icon: "/public/assets/icons/chris.png",
+              icon: "/assets/icons/chris.png",
             },
             {
               id: "Buddhist",
               value: "Buddhist",
               label: "বৌদ্ধ",
-              icon: "/public/assets/icons/badda.png",
+              icon: "/assets/icons/badda.png",
             },
             {
               id: "anyone",
               value: "anyone",
               label: "যেকোনো",
-              icon: "/public/assets/icons/anyone.png",
+              icon: "/assets/icons/anyone.png",
             },
           ].map((item) => (
             <div key={item.id} className="text-center relative">
