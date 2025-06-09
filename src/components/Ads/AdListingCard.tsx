@@ -67,10 +67,10 @@ export default function AdListingCard({
             </div>
             {isRent && (
               <div className="flex md:justify-end mt-4">
-                <button className="bg-blue-500 text-white px-3 py-1 font-semibold">
+                <button className="bg-blue-500 text-white text-sm md:text-md md:px-3 px-2 py-1 font-semibold">
                   ভাড়া হয়েছে
                 </button>
-                <button className="bg-red-500 text-white px-3 py-1 font-semibold">
+                <button className="bg-red-500 text-white text-sm md:text-md md:px-3 px-2 py-1 font-semibold">
                   মুছে ফেলুন
                 </button>
               </div>
