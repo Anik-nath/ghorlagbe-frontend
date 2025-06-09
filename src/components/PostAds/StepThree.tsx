@@ -46,7 +46,7 @@ const StepThree = ({
       <div className="flex justify-end space-x-4 pt-4">
         <Button
           type="button"
-          className="bg-yellow-400 hover:bg-yellow-400/90 text-lg text-gray-800"
+          className="bg-yellow-400 hover:bg-yellow-400/90 md:text-lg text-md text-gray-800"
           variant="outline"
           onClick={handlePrevStep}
         >
@@ -54,7 +54,7 @@ const StepThree = ({
         </Button>
         <Button
           type="submit"
-          className="bg-[#198754] hover:bg-[#157347] px-8 text-lg"
+          className="bg-[#198754] hover:bg-[#157347] md:px-8 md:text-lg text-md"
         >
           পোস্টটি সাবমিট করুন
         </Button>

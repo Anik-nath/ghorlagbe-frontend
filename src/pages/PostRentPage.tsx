@@ -226,7 +226,7 @@ const PostRentPage = () => {
   };
 
   return (
-    <div className="min-h-screen max-w-5xl px-4 md:px-0 mx-auto">
+    <div className="min-h-screen max-w-5xl px-8 md:px-0 mx-auto">
       <section className="py-8">
         <div className="md:text-3xl text-xl font-medium text-gray-800 pb-8">
           আপনার বিনামূল্যে বিজ্ঞাপন দিয়ে শুরু করুন
