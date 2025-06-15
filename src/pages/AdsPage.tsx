@@ -11,6 +11,7 @@ import {
 import AdsCard from "@/components/Ads/AdsCard";
 import SearchForm from "@/components/Search/SearchForm";
 import { Link } from "react-router-dom";
+import PostAdSection from "@/components/Home/PostAdSection";
 
 interface Property {
   id: number;
@@ -496,6 +497,8 @@ const AdsPage = () => {
           </div>
         </div>
       </div>
+      {/* Call to Action Section */}
+      <PostAdSection />
     </div>
   );
 };
