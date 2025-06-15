@@ -84,7 +84,9 @@ const LatestAdvertisement = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {properties.map((property) => (
-            <AdsCard key={property.id} property={property} />
+            <Link key={property.id} to={`/ads/${property.id}`}>
+              <AdsCard key={property.id} property={property} />
+            </Link>
           ))}
         </div>
 

@@ -1,9 +1,11 @@
 import { Heart, Shield, Clock } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Link, useParams } from "react-router-dom";
 
 const FeaturesSection = () => {
   const features = [
     {
+      id: "busy",
       icon: <Heart className="h-8 w-8 text-green-600 mx-auto mb-4" />,
       title: "আমরা সবচেয়ে ব্যস্ত",
       description:
@@ -11,6 +13,7 @@ const FeaturesSection = () => {
       extraHeight: false,
     },
     {
+      id: "security",
       icon: <Shield className="h-8 w-8 text-green-600 mx-auto mb-4" />,
       title: "নিরাপত্তা",
       description:
@@ -18,6 +21,7 @@ const FeaturesSection = () => {
       extraHeight: true,
     },
     {
+      id: "for-people",
       icon: <Clock className="h-8 w-8 text-green-600 mx-auto mb-4" />,
       title: "আমরা মানুষের জন্য করছি",
       description:
