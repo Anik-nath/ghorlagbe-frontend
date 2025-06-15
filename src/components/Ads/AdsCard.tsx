@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart, MapPin } from "lucide-react";
 import { BiSolidBadge } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 const AdsCard = ({ property }) => {
   return (
@@ -24,15 +25,20 @@ const AdsCard = ({ property }) => {
         </div>
 
         {/* Heart Icon */}
-        <button className="absolute top-2 right-2 p-3 bg-white rounded-full shadow-md hover:bg-gray-100 transition-colors z-10">
-          <Heart className="h-4 w-4 text-gray-900" />
-        </button>
+        <Link to="/favorites">
+          <button className="absolute top-2 right-2 p-3 bg-white rounded-full shadow-md hover:bg-gray-100 transition-colors z-10">
+            <Heart className="h-4 w-4 text-gray-900" />
+          </button>
+        </Link>
       </div>
 
       <CardContent className="p-4">
-        <h3 className="font-medium text-[1.2rem] mb-2 text-gray-900">{property.title}</h3>
+        <h3 className="font-medium text-[1.2rem] mb-2 text-gray-900">
+          {property.title}
+        </h3>
         <p className="text-green-600 font-medium text-md mb-2">
-          {property.price}/ <span className="text-gray-800">{property.day}</span>
+          {property.price}/{" "}
+          <span className="text-gray-800">{property.day}</span>
         </p>
         <p className="text-gray-800 text-md my-2 pt-2">
           <MapPin className="inline mr-1 w-5 h-5" />
