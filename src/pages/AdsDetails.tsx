@@ -9,8 +9,8 @@ import {
 } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaShieldHeart, FaXTwitter } from "react-icons/fa6";
-import { AiFillWechat } from "react-icons/ai";
 import SendMessage from "@/components/MessageButton/SendMessage";
+import CallButton from "@/components/MessageButton/CallButton";
 
 const AdsDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -245,13 +245,7 @@ const AdsDetails = () => {
             </div>
             {/* contact info */}
             <SendMessage />
-            <button
-              className="w-full bg-[#157347] hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition flex items-center justify-center gap-2"
-              type="button"
-            >
-              <FaPhoneAlt size={18} className="text-white" />
-              ০১৭xxxxxxxx
-            </button>
+            <CallButton />
           </div>
           {/* warning */}
           <div className="mt-6">
