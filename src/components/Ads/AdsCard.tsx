@@ -1,18 +1,85 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Heart, MapPin } from "lucide-react";
+import { Heart, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import { BiSolidBadge } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const AdsCard = ({ property }) => {
+  // Sample images array
+  const images = [
+    "https://ghor.saifmorshed.com/storage/upload/46/pHW64W6RLGcnThifxubJB657uXaqKJKyegLLbZJS.jpg",
+    "https://ghor.saifmorshed.com/storage/upload/48/aDPj4OTGzRmqj1AYs8tSHDxb0GE0Ycz0vr96ZkbS.jpg",
+    "https://ghor.saifmorshed.com/storage/upload/46/pHW64W6RLGcnThifxubJB657uXaqKJKyegLLbZJS.jpg",
+  ];
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
   return (
     <Card className="hover:shadow-lg transition-shadow duration-300 h-full">
       <div className="relative z-0">
-        <img
-          src="https://ghor.saifmorshed.com/storage/upload/46/pHW64W6RLGcnThifxubJB657uXaqKJKyegLLbZJS.jpg"
-          alt={property.title}
-          className="w-full h-56 object-cover z-0 rounded-t-md"
-          loading="lazy"
-        />
+        {/* Image Slider */}
+        <div className="relative h-56 overflow-hidden rounded-t-md">
+          <img
+            src={images[currentImageIndex]}
+            alt={property.title}
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+
+          {/* Navigation Arrows */}
+          {images.length > 1 && (
+            <>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  prevImage();
+                }}
+                className="absolute left-2 top-1/2 -translate-y-1/2 p-1  text-white rounded-full transition-colors"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  nextImage();
+                }}
+                className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-white rounded-full transition-colors"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </>
+          )}
+
+          {/* Image Indicator Dots
+          {images.length > 1 && (
+            <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-1">
+              {images.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setCurrentImageIndex(index);
+                  }}
+                  className={`h-2 w-2 rounded-full transition-colors ${
+                    index === currentImageIndex ? "bg-white" : "bg-white/50"
+                  }`}
+                />
+              ))}
+            </div>
+          )} */}
+        </div>
 
         {/* Verified Badge */}
         <div className="absolute bottom-0 -left-3 z-10">
