@@ -1,7 +1,14 @@
 import { useAuth } from "@/contexts/AuthContext";
 import { FaPhoneAlt } from "react-icons/fa";
 import { Button } from "../ui/button";
-import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../ui/dialog";
+import { AiFillWechat } from "react-icons/ai";
 
 const CallButton = () => {
   const { isAuthenticated } = useAuth();
@@ -33,9 +40,15 @@ const CallButton = () => {
           {hidenumber}
         </button>
       </DialogTrigger>
+
       <DialogContent>
-        <div className="flex flex-col items-center gap-4 py-4">
-          <p className="text-lg">মেসেজ পাঠাতে লগইন করুন</p>
+        <DialogHeader>
+          <DialogTitle className="text-left flex items-center gap-2">
+            {isAuthenticated ? "কল করুন" : "লগইন প্রয়োজন"}
+          </DialogTitle>
+        </DialogHeader>
+        <div className="flex flex-col items-center gap-4 py-4  border border-gray-300  rounded-lg bg-green-100">
+          <p className="text-lg">কল করতে লগইন করুন</p>
           <Button asChild className="bg-[#157347] hover:bg-green-700">
             <a href="/login">লগইন করুন</a>
           </Button>

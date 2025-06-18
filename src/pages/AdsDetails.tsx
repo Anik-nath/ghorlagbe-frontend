@@ -11,6 +11,7 @@ import { MdEmail } from "react-icons/md";
 import { FaShieldHeart, FaXTwitter } from "react-icons/fa6";
 import SendMessage from "@/components/MessageButton/SendMessage";
 import CallButton from "@/components/MessageButton/CallButton";
+import MultipleImageGrid from "@/components/Ads/MultipleImageGrid";
 
 const AdsDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -68,29 +69,8 @@ const AdsDetails = () => {
         </div>
       </div>
       {/* Image grid layout */}
-      <div className="grid grid-cols-3 gap-6">
-        {/* Left column: one large image */}
-        <div className="col-span-2">
-          <img
-            src="https://ghor.saifmorshed.com/storage/upload/46/pHW64W6RLGcnThifxubJB657uXaqKJKyegLLbZJS.jpg"
-            alt="Main"
-            className="w-full h-full object-cover rounded-lg"
-          />
-        </div>
-        {/* Right column: two stacked images */}
-        <div className="flex flex-col gap-6">
-          <img
-            src="https://ghor.saifmorshed.com/storage/upload/46/pHW64W6RLGcnThifxubJB657uXaqKJKyegLLbZJS.jpg"
-            alt="Secondary 1"
-            className="w-full h-full object-cover rounded-lg"
-          />
-          <img
-            src="https://ghor.saifmorshed.com/storage/upload/46/pHW64W6RLGcnThifxubJB657uXaqKJKyegLLbZJS.jpg"
-            alt="Secondary 2"
-            className="w-full h-full object-cover rounded-lg"
-          />
-        </div>
-      </div>
+      <MultipleImageGrid />
+
       {/* details and message*/}
       <section className="grid grid-cols-1 md:grid-cols-3 gap-6 my-12">
         <div className="col-span-2">
