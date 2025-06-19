@@ -3,8 +3,10 @@ import { Heart, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import { BiSolidBadge } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useAuth } from "@/contexts/AuthContext";
 
 const AdsCard = ({ property }) => {
+  const { isAuthenticated } = useAuth();
   // Sample images array
   const images = [
     "https://ghor.saifmorshed.com/storage/upload/46/pHW64W6RLGcnThifxubJB657uXaqKJKyegLLbZJS.jpg",
@@ -61,24 +63,6 @@ const AdsCard = ({ property }) => {
               </button>
             </>
           )}
-
-          {/* Image Indicator Dots
-          {images.length > 1 && (
-            <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-1">
-              {images.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setCurrentImageIndex(index);
-                  }}
-                  className={`h-2 w-2 rounded-full transition-colors ${
-                    index === currentImageIndex ? "bg-white" : "bg-white/50"
-                  }`}
-                />
-              ))}
-            </div>
-          )} */}
         </div>
 
         {/* Verified Badge */}
@@ -92,7 +76,7 @@ const AdsCard = ({ property }) => {
         </div>
 
         {/* Heart Icon */}
-        <Link to="/favorites">
+        <Link to={!isAuthenticated ? "/login" : "/favorites"}>
           <button className="absolute top-2 right-2 p-3 bg-white rounded-full shadow-md hover:bg-gray-100 transition-colors z-10">
             <Heart className="h-4 w-4 text-gray-900" />
           </button>
