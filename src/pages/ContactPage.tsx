@@ -1,4 +1,5 @@
-import Mission from "@/components/About/Misson";
+
+import PostAdSection from "@/components/Home/PostAdSection";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -232,12 +233,10 @@ const ContactPage = () => {
               </Card>
             </div>
           </div>
-          {/* FAQ Section */}
-          {/* Live Chat Section */}
         </div>
       </div>
-      {/* Mission Section */}
-      <Mission />
+      {/* PostAdSection Section */}
+      <PostAdSection />
     </div>
   );
 };

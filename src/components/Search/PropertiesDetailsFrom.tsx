@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Button } from "@/components/ui/button";
 const PropertiesDetailsFrom = ({
   setLift,
@@ -13,14 +13,70 @@ const PropertiesDetailsFrom = ({
   wifi,
   gas,
   security,
+  isSearchbox,
 }) => {
   return (
     <div className="max-w-6xl mx-auto bg-white rounded-lg md:p-10 p-4 border">
       <form>
         <div className="space-y-5">
+          {isSearchbox && (
+            <div className="row mb-3 flex items-start gap-4">
+              <label className="form-label col-4 w-4/12 text-left">
+                অনুসন্ধান:
+              </label>
+              <div className="input-group w-full">
+                <span
+                  className="font-20 px-2 pt-2"
+                  style={{
+                    position: "absolute",
+                    top: "5px",
+                    left: "0",
+                    zIndex: "9",
+                    background: "transparent",
+                  }}
+                >
+                  <i className="fa-solid fa-magnifying-glass"></i>
+                </span>
+                <input
+                  type="text"
+                  className="form-control w-full border"
+                  name="title"
+                  placeholder="খুঁজুন ফ্ল্যাট, সিট, রুম"
+                  aria-label=""
+                  style={{
+                    height: "50px",
+                    paddingLeft: "36px",
+                    borderRadius: "5px",
+                  }}
+                />
+              </div>
+            </div>
+          )}
+          {/* অবস্থান */}
+          <div className="flex items-start gap-4">
+            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">
+              অবস্থান:
+            </label>
+            <div className="w-full grid grid-cols-2 gap-2">
+              <select className="px-4 py-2 border border-gray-300 rounded-md">
+                <option value="">শহর</option>
+                <option value="1">ঢাকা</option>
+                <option value="2">চট্টগ্রাম</option>
+                <option value="3">সিলেট</option>
+              </select>
+              <select className="px-4 py-2 border border-gray-300 rounded-md">
+                <option value="">এলাকা</option>
+                <option value="1">ধানমন্ডি</option>
+                <option value="2">গুলশান</option>
+                <option value="3">বনানী</option>
+              </select>
+            </div>
+          </div>
           {/* প্রপার্টির ধরন */}
           <div className="flex items-start gap-4">
-            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">প্রপার্টির ধরন:</label>
+            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">
+              প্রপার্টির ধরন:
+            </label>
             <select className="w-full px-4 py-2 border border-gray-300 rounded-md">
               <option value="">-------</option>
               <option value="0">ফ্লাট ভাড়া</option>
@@ -31,7 +87,9 @@ const PropertiesDetailsFrom = ({
 
           {/* ভাড়ার ধরন */}
           <div className="flex items-start gap-4">
-            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">ভাড়ার ধরন:</label>
+            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">
+              ভাড়ার ধরন:
+            </label>
             <div className="w-full flex flex-wrap gap-x-6 gap-y-2">
               {[
                 { label: "ব্যাচেলর", value: "bachelor" },
@@ -57,28 +115,11 @@ const PropertiesDetailsFrom = ({
             </div>
           </div>
 
-          {/* অবস্থান */}
-          <div className="flex items-start gap-4">
-            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">অবস্থান:</label>
-            <div className="w-full grid grid-cols-2 gap-2">
-              <select className="px-4 py-2 border border-gray-300 rounded-md">
-                <option value="">শহর</option>
-                <option value="1">ঢাকা</option>
-                <option value="2">চট্টগ্রাম</option>
-                <option value="3">সিলেট</option>
-              </select>
-              <select className="px-4 py-2 border border-gray-300 rounded-md">
-                <option value="">এলাকা</option>
-                <option value="1">ধানমন্ডি</option>
-                <option value="2">গুলশান</option>
-                <option value="3">বনানী</option>
-              </select>
-            </div>
-          </div>
-
           {/* বেড রুম */}
           <div className="flex items-start gap-4">
-            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">বেড রুম:</label>
+            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">
+              বেড রুম:
+            </label>
             <select className="w-full px-4 py-2 border border-gray-300 rounded-md">
               <option value="">-------</option>
               <option value="1">১</option>
@@ -92,7 +133,9 @@ const PropertiesDetailsFrom = ({
 
           {/* ওয়াস রুম */}
           <div className="flex items-start gap-4">
-            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">ওয়াস রুম:</label>
+            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">
+              ওয়াস রুম:
+            </label>
             <select className="w-full px-4 py-2 border border-gray-300 rounded-md">
               <option value="">-------</option>
               <option value="1">১</option>
@@ -105,7 +148,9 @@ const PropertiesDetailsFrom = ({
           </div>
           {/* লিফট সুবিধা */}
           <div className="flex items-start gap-4 mb-4">
-            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">লিফট সুবিধা:</label>
+            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">
+              লিফট সুবিধা:
+            </label>
             <div className="w-full flex">
               <div className="flex items-center rounded-full overflow-hidden">
                 {/* আছে Button */}
@@ -142,7 +187,9 @@ const PropertiesDetailsFrom = ({
 
           {/* জেনেরেটর সুবিধা */}
           <div className="flex items-start gap-4">
-            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">জেনেরেটর সুবিধা:</label>
+            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">
+              জেনেরেটর সুবিধা:
+            </label>
             <div className="w-full flex">
               <div className="flex items-center rounded-full overflow-hidden">
                 <button
@@ -180,7 +227,9 @@ const PropertiesDetailsFrom = ({
 
           {/* সিকিউরিটি গার্ড */}
           <div className="flex items-start gap-4">
-            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">সিকিউরিটি গার্ড:</label>
+            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">
+              সিকিউরিটি গার্ড:
+            </label>
             <div className="w-full flex">
               <div className="flex items-center rounded-full overflow-hidden">
                 <button
@@ -218,7 +267,9 @@ const PropertiesDetailsFrom = ({
 
           {/* পার্কিং সুবিধা */}
           <div className="flex items-start gap-4">
-            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">পার্কিং সুবিধা:</label>
+            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">
+              পার্কিং সুবিধা:
+            </label>
             <div className="w-full flex">
               <div className="flex items-center rounded-full overflow-hidden">
                 <button
@@ -256,7 +307,9 @@ const PropertiesDetailsFrom = ({
 
           {/* গ্যাস সুবিধা */}
           <div className="flex items-start gap-4">
-            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">গ্যাস সুবিধা:</label>
+            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">
+              গ্যাস সুবিধা:
+            </label>
             <div className="w-full flex">
               <div className="flex items-center rounded-full overflow-hidden">
                 <button
@@ -302,7 +355,9 @@ const PropertiesDetailsFrom = ({
 
           {/* WIFI সুবিধা */}
           <div className="flex items-start gap-4">
-            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">WIFI সুবিধা:</label>
+            <label className="w-4/12 text-left md:text-lg text-md text-nowrap">
+              WIFI সুবিধা:
+            </label>
             <div className="w-full flex">
               <div className="flex items-center rounded-full overflow-hidden">
                 <button
@@ -333,7 +388,10 @@ const PropertiesDetailsFrom = ({
           </div>
 
           {/* Submit */}
-          <div className="pt-4 flex justify-end">
+          <div className="pt-4 flex justify-end gap-2">
+            <Button className="w-auto text-sm bg-[#157347] hover:bg-green-700">
+              আরও বিস্তারিত
+            </Button>
             <Button className="w-auto text-sm bg-[#157347] hover:bg-green-700">
               খুঁজুন
             </Button>

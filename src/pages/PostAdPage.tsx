@@ -1,4 +1,5 @@
 import Mission from "@/components/About/Misson";
+import PostAdSection from "@/components/Home/PostAdSection";
 import HelpSection, { HelpLink } from "@/components/PostAds/HelpSection";
 import PostOptionCard, {
   PostOption,
@@ -73,8 +74,8 @@ export default function HomePage() {
         </section>
       </div>
 
-      {/* Mission */}
-      <Mission />
+      {/* PostAdSection */}
+      <PostAdSection />
     </div>
   );
 }
