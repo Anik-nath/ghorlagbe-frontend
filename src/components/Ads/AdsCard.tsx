@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Heart, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import { BiSolidBadge } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 
 const AdsCard = ({ property }) => {
@@ -15,30 +15,66 @@ const AdsCard = ({ property }) => {
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(false);
+
+  // Auto-play effect
+  useEffect(() => {
+    let interval;
+    if (isAutoPlaying && images.length > 1) {
+      interval = setInterval(() => {
+        setCurrentImageIndex((prevIndex) =>
+          prevIndex === images.length - 1 ? 0 : prevIndex + 1
+        );
+      }, 5000); // Change image every 3 seconds
+    }
+
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
+  }, [isAutoPlaying, images.length]);
 
   const nextImage = () => {
     setCurrentImageIndex((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
+    setIsAutoPlaying(true);
   };
 
   const prevImage = () => {
     setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
+    setIsAutoPlaying(true);
+  };
+
+  const stopAutoPlay = () => {
+    setIsAutoPlaying(false);
   };
 
   return (
     <Card className="hover:shadow-lg transition-shadow duration-300 h-full">
       <div className="relative z-0">
         {/* Image Slider */}
-        <div className="relative h-56 overflow-hidden rounded-t-md">
-          <img
-            src={images[currentImageIndex]}
-            alt={property.title}
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
+        <div
+          className="relative h-56 overflow-hidden rounded-t-md"
+          onMouseEnter={stopAutoPlay}
+        >
+          <div
+            className="flex transition-transform duration-700 ease-in h-full"
+            style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
+          >
+            {images.map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                alt={`${property.title} - ${index + 1}`}
+                className="w-full h-full object-cover flex-shrink-0"
+                loading="lazy"
+              />
+            ))}
+          </div>
 
           {/* Navigation Arrows */}
           {images.length > 1 && (
@@ -48,7 +84,7 @@ const AdsCard = ({ property }) => {
                   e.preventDefault();
                   prevImage();
                 }}
-                className="absolute left-2 top-1/2 -translate-y-1/2 p-1  text-white rounded-full transition-colors"
+                className="absolute left-2 top-1/2 -translate-y-1/2 p-1 text-white rounded-full transition-all duration-1000 hover:bg-white hover:bg-opacity-80 hover:text-gray-900"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
@@ -57,11 +93,27 @@ const AdsCard = ({ property }) => {
                   e.preventDefault();
                   nextImage();
                 }}
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-white rounded-full transition-colors"
+                className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-white rounded-full transition-all duration-1000 hover:bg-white hover:bg-opacity-80 hover:text-gray-900"
               >
                 <ChevronRight className="h-5 w-5" />
               </button>
             </>
+          )}
+
+          {/* Image Indicators */}
+          {images.length > 1 && (
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1">
+              {images.map((_, index) => (
+                <div
+                  key={index}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === currentImageIndex
+                      ? "bg-white"
+                      : "bg-white bg-opacity-50"
+                  }`}
+                />
+              ))}
+            </div>
           )}
         </div>
 
