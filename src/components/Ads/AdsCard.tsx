@@ -101,7 +101,7 @@ const AdsCard = ({ property }) => {
           )}
 
           {/* Image Indicators */}
-          {images.length > 1 && (
+          {/* {images.length > 1 && (
             <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1">
               {images.map((_, index) => (
                 <div
@@ -114,7 +114,7 @@ const AdsCard = ({ property }) => {
                 />
               ))}
             </div>
-          )}
+          )} */}
         </div>
 
         {/* Verified Badge */}
