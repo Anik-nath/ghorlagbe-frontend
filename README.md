@@ -31,7 +31,7 @@ cp .env.example .env
 npm start
 ```
 
-The app should now be running at [http://localhost:3000](http://localhost:3000).
+The app should now be running at [http://localhost:8080](http://localhost:8080).
 
 ## 5. Build for Production (Optional)
 
@@ -40,8 +40,3 @@ To create an optimized production build:
 ```bash
 npm run build
 ```
-
----
-
-**Need help?**  
-Check the project documentation or open an issue.
